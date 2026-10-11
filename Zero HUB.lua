@@ -1,10 +1,5 @@
 -- ดีใจด้วยนะทีแกะมาถึงนี้ ไอควย
 -- และ ฟาก discord กูด้วย
--- Zero_HUB 1 - readable function names
--- Deobfuscated naming pass: function/method identifiers were renamed only.
--- Runtime logic, control flow, constants, callbacks, and system behavior are preserved.
--- Original obfuscated names are documented in the mapping below.
--- Generated from the supplied Zero_HUB 1 source.
 
 -- Function name mapping (obfuscated -> readable):
 -- BHqZ0HDHxU -> AimbotFunction4
@@ -1422,7 +1417,7 @@ local function ZeroInstallVaultHook()
                 if character and character == Q_qlzpNO1["Character"] and MU_m1UmlXXDZ.WpxuObUp then
                     local buffs=MU_m1UmlXXDZ.WpxuObUp["ActiveBuffs"]
                     if type(buffs)=="table" then
-                        buffs["PostVaultBoost"]={ ["amt"]=6.4, ["endTime"]=tick()+20 }
+                        buffs["PostVaultBoost"]={ ["amt"]=6, ["endTime"]=tick()+5 }
                         pcall(function() MU_m1UmlXXDZ.UpdateMovementSpeed(); MU_m1UmlXXDZ.StartFakePerksHeartbeat() end)
                     end
                 end
