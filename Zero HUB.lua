@@ -1422,7 +1422,7 @@ local function ZeroInstallVaultHook()
                 if character and character == Q_qlzpNO1["Character"] and MU_m1UmlXXDZ.WpxuObUp then
                     local buffs=MU_m1UmlXXDZ.WpxuObUp["ActiveBuffs"]
                     if type(buffs)=="table" then
-                        buffs["PostVaultBoost"]={ ["amt"]=6.4, ["endTime"]=tick()+20 }
+                        buffs["PostVaultBoost"]={ ["amt"]=6, ["endTime"]=tick()+6 }
                         pcall(function() MU_m1UmlXXDZ.UpdateMovementSpeed(); MU_m1UmlXXDZ.StartFakePerksHeartbeat() end)
                     end
                 end
