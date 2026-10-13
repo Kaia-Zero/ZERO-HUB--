@@ -1,5 +1,5 @@
 local scripts = {
-    [93978595733734] = "https://api.flexozy.xyz/raw/CKF6iKLd",
+    [93978595733734] = "https://raw.githubusercontent.com/Kaia-Zero/Zero-HUB/refs/heads/main/%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%82%E0%B8%AB%E0%B8%A5%E0%B8%94_UI%20Zero%20HUB%20.lua",
     [138103330716004] = "https://raw.githubusercontent.com/Kaia-Zero/Zero-HUB/refs/heads/main/3AM.lua",
     [537413528] = "https://raw.githubusercontent.com/Kaia-Zero/Zero-HUB/refs/heads/main/%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B8%AD.lua",
     [155615604] = "https://api.flexozy.xyz/raw/VAwAU9Tp",
