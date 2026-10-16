@@ -224,17 +224,7 @@ local MlbwbqwUwD = {
 }
 local MU_m1UmlXXDZ = {}
 local NuD1bHO_vv = game["GetService"](game, "StarterGui")
-local function ShowStartupNotification()
-    pcall(function()
-        NuD1bHO_vv:SetCore("SendNotification", {
-            ["Title"] = "Zero HUB",
-            ["Text"] = "ขอบคุณที่ใช้สคริปต์ของเรา",
-            ["Icon"] = "rbxassetid://124116752283304",
-            ["Duration"] = 4,
-        })
-    end)
-end
-ShowStartupNotification()
+-- ใช้ระบบแจ้งเตือนของ ZeroHUB หลังโหลด Library เสร็จ
 -- PMHUB launcher UI removed.
 -- The main script now starts automatically when this file is executed.
 function RunMainScript()
@@ -249,6 +239,7 @@ function RunMainScript()
         local QolwvD0XnWnzM = loadstring(game["HttpGet"](game, pUMIq_ .. "Library.lua"))()
         local QOZpNNvbmDH = loadstring(game["HttpGet"](game, pUMIq_ .. "addons/ThemeManager.lua"))()
         local ppIHNN = loadstring(game["HttpGet"](game, pUMIq_ .. "addons/SaveManager.lua"))()
+        QolwvD0XnWnzM:Notify("ขอบคุณที่ใช้สคริปต์ของเรา", 4)
         QolwvD0XnWnzM["MakeBoxPopOut"] = function(QHlZWIQqqW, qmb_D)
             if QHlZWIQqqW then
                 QHlZWIQqqW["PoppedOut"] = false
@@ -490,10 +481,8 @@ function RunMainScript()
             end)
             if not ok then
                 pcall(function()
-                    game:GetService("StarterGui"):SetCore(
-                        "SendNotification",
-                        { Title = "Zero HUB • Background", Text = "ใช้ลิงก์นี้ไม่ได้", Duration = 3 }
-                    )
+                    game:GetService("StarterGui")
+                        :SetCore("SendNotification", { Title = "Zero HUB • Background", Text = "ใช้ลิงก์นี้ไม่ได้", Duration = 3 })
                 end)
             end
         end)
@@ -580,10 +569,7 @@ function RunMainScript()
             if FakeNameValue == "" then
                 pcall(function()
                     game:GetService("StarterGui")
-                        :SetCore(
-                            "SendNotification",
-                            { Title = "Zero HUB • Fake Name", Text = "กรุณาใส่ชื่อก่อน", Duration = 3 }
-                        )
+                        :SetCore("SendNotification", { Title = "Zero HUB • Fake Name", Text = "กรุณาใส่ชื่อก่อน", Duration = 3 })
                 end)
                 return
             end
@@ -638,10 +624,8 @@ function RunMainScript()
         MusicBox:AddButton("▶ เล่น", function()
             if MusicId == "" or MusicSound.SoundId == "" then
                 pcall(function()
-                    game:GetService("StarterGui"):SetCore(
-                        "SendNotification",
-                        { Title = "เพลง", Text = "กรุณาใส่รหัสเสียงก่อน", Duration = 3 }
-                    )
+                    game:GetService("StarterGui")
+                        :SetCore("SendNotification", { Title = "เพลง", Text = "กรุณาใส่รหัสเสียงก่อน", Duration = 3 })
                 end)
                 return
             end
@@ -707,21 +691,9 @@ function RunMainScript()
         local ZeroRoleLast = nil
         local function ZeroRoleNotify(role)
             if role == "Killer" then
-                pcall(function()
-                    NuD1bHO_vv:SetCore(
-                        "SendNotification",
-                        { Title = "Zero HUB", Text = "🔪 คุณได้เป็นฆาตกร", Icon = "rbxassetid://124116752283304", Duration = 4 }
-                    )
-                end)
+                QolwvD0XnWnzM:Notify("คุณได้เป็นฆาตกร", 4)
             elseif role == "Survivors" then
-                pcall(function()
-                    NuD1bHO_vv:SetCore("SendNotification", {
-                        Title = "Zero HUB",
-                        Text = "🛡️ คุณได้เป็นผู้รอดชีวิต",
-                        Icon = "rbxassetid://124116752283304",
-                        Duration = 4,
-                    })
-                end)
+                QolwvD0XnWnzM:Notify("คุณได้เป็นผู้รอดชีวิต", 4)
             end
         end
         local function ZeroCheckRole()
@@ -1177,8 +1149,7 @@ function RunMainScript()
                 grad.Parent = obj
                 task.spawn(function()
                     local TweenService = game:GetService("TweenService")
-                    local tween =
-                        TweenService:Create(grad, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1), { Offset = Vector2.new(1, 1) })
+                    local tween = TweenService:Create(grad, TweenInfo.new(2, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, -1), { Offset = Vector2.new(1, 1) })
                     tween:Play()
                 end)
             end
@@ -1245,13 +1216,7 @@ function RunMainScript()
             if ZeroInfinity.Myers then
                 -- ถ้าปุ่ม/ScreenGui ถูกเกมลบตอนจบรอบ ให้สร้างใหม่แทนการเปิด Visible ของปุ่มเก่า
                 local pg = game:GetService("CoreGui")
-                if
-                    not ZeroMyers.Gui
-                    or not ZeroMyers.Gui.Parent
-                    or not ZeroMyers.Button
-                    or not ZeroMyers.Button.Parent
-                    or (pg and ZeroMyers.Gui.Parent ~= pg)
-                then
+                if not ZeroMyers.Gui or not ZeroMyers.Gui.Parent or not ZeroMyers.Button or not ZeroMyers.Button.Parent or (pg and ZeroMyers.Gui.Parent ~= pg) then
                     ZeroSetupMyersButton()
                 else
                     ZeroMyers.Button.Visible = true
@@ -1322,10 +1287,7 @@ function RunMainScript()
                 task.wait(0.25)
                 if ZeroInfinity.Myers then
                     local pg = game:GetService("CoreGui")
-                    if
-                        pg
-                        and (not ZeroMyers.Gui or not ZeroMyers.Gui.Parent or ZeroMyers.Gui.Parent ~= pg or not ZeroMyers.Button or not ZeroMyers.Button.Parent)
-                    then
+                    if pg and (not ZeroMyers.Gui or not ZeroMyers.Gui.Parent or ZeroMyers.Gui.Parent ~= pg or not ZeroMyers.Button or not ZeroMyers.Button.Parent) then
                         pcall(ZeroSetupMyersButton)
                     elseif ZeroMyers.Button and ZeroMyers.Button.Parent then
                         ZeroMyers.Button.Visible = true
@@ -1854,6 +1816,22 @@ function RunMainScript()
                 ["survivorMaxDistance"] = 500,
                 ["fillTransparency"] = 0.5,
                 ["espScpEnabled"] = false,
+                ["VIS_ShowHookCounter"] = false,
+                ["RADAR_Enabled"] = false,
+                ["RADAR_Range"] = 250,
+                ["RADAR_Size"] = 170,
+                ["RADAR_Transparency"] = 0.2,
+                ["RADAR_ShowKiller"] = false,
+                ["RADAR_ShowSurvivor"] = false,
+                ["RADAR_ShowGenerator"] = false,
+                ["RADAR_ShowPallet"] = false,
+                ["RADAR_ShowHook"] = false,
+                ["RADAR_ShowGate"] = false,
+                ["RADAR_ShowWindow"] = false,
+                ["RADAR_ShowZombie"] = false,
+                ["SURV_FakeParry"] = false,
+                ["SURV_FakeParryAnim"] = "Enten",
+                ["SURV_FakeParryLocked"] = false,
                 ["espScpShowName"] = true,
                 ["espScpColor"] = Color3["fromRGB"](200, 60, 255),
                 ["espScpDistance"] = 500,
@@ -1892,6 +1870,7 @@ function RunMainScript()
                 ["spearPrediction"] = true,
                 ["spearDamping"] = true,
                 ["spearPingLead"] = 1,
+                ["spearVelocityLead"] = 1.0,
                 ["spearSnaplineMaxDistance"] = 400,
                 ["spearSnaplineShowText"] = true,
                 ["spearIndicatorEnabled"] = false,
@@ -2186,22 +2165,14 @@ function RunMainScript()
                     QOw0vz["Position"] = UDim2["fromOffset"](ScaleNotificationElement(IUovN_NN0NXoQ, QUzIH), ScaleNotificationElement(uoZIXWm, QUzIH))
                     QOw0vz["Size"] = UDim2["new"](0, ScaleNotificationElement(DxbxHvZ1, QUzIH), 0, ScaleNotificationElement(DxbxHvZ1, QUzIH))
                     for pWHuZp_vW_xb, MqU0n in ipairs(_U0IU) do
-                        MqU0n["o"]["Position"] = UDim2["fromOffset"](
-                            ScaleNotificationElement(IUovN_NN0NXoQ - MqU0n["pad"], QUzIH),
-                            ScaleNotificationElement(uoZIXWm - MqU0n["pad"], QUzIH)
-                        )
-                        MqU0n["o"]["Size"] = UDim2["new"](
-                            0,
-                            ScaleNotificationElement(DxbxHvZ1 + MqU0n["pad"] * 2, QUzIH),
-                            0,
-                            ScaleNotificationElement(DxbxHvZ1 + MqU0n["pad"] * 2, QUzIH)
-                        )
+                        MqU0n["o"]["Position"] =
+                            UDim2["fromOffset"](ScaleNotificationElement(IUovN_NN0NXoQ - MqU0n["pad"], QUzIH), ScaleNotificationElement(uoZIXWm - MqU0n["pad"], QUzIH))
+                        MqU0n["o"]["Size"] =
+                            UDim2["new"](0, ScaleNotificationElement(DxbxHvZ1 + MqU0n["pad"] * 2, QUzIH), 0, ScaleNotificationElement(DxbxHvZ1 + MqU0n["pad"] * 2, QUzIH))
                     end
                     for OQWQ0loz, DDWbbmp in ipairs(IQm1Z_IZ1OONml) do
-                        DDWbbmp["o"]["Position"] = UDim2["fromOffset"](
-                            ScaleNotificationElement(OUMpHllubqUzv + DDWbbmp["dx"], QUzIH),
-                            ScaleNotificationElement(wx_uqpzwQZz + DDWbbmp["dy"], QUzIH)
-                        )
+                        DDWbbmp["o"]["Position"] =
+                            UDim2["fromOffset"](ScaleNotificationElement(OUMpHllubqUzv + DDWbbmp["dx"], QUzIH), ScaleNotificationElement(wx_uqpzwQZz + DDWbbmp["dy"], QUzIH))
                         DDWbbmp["o"]["Size"] = UDim2["new"](0, ScaleNotificationElement(QHDl0qO, QUzIH), 0, ScaleNotificationElement(I0bxlvMwp, QUzIH))
                         DDWbbmp["o"]["TextSize"] = ScaleNotificationElement(wmq1W1ZquzWuuz, QUzIH)
                     end
@@ -2929,8 +2900,7 @@ function RunMainScript()
                                 local _MZu_MDMn = wv1qz0UObXOvX["Magnitude"]
                                 if _MZu_MDMn > 0.1 then
                                     NQW1Z["silentAimTarget"] = wnvbWH
-                                    NQW1Z["silentAimLookVector"] =
-                                        Vector3["new"](wv1qz0UObXOvX["X"] / _MZu_MDMn, wv1qz0UObXOvX["Y"] / _MZu_MDMn, wv1qz0UObXOvX["Z"] / _MZu_MDMn)
+                                    NQW1Z["silentAimLookVector"] = Vector3["new"](wv1qz0UObXOvX["X"] / _MZu_MDMn, wv1qz0UObXOvX["Y"] / _MZu_MDMn, wv1qz0UObXOvX["Z"] / _MZu_MDMn)
                                     NQW1Z["currentMuzzlePos"] = wUDDuDxD0nW
                                     NQW1Z["currentTargetPos"] = N0NIuWwH_wNxoM
                                 else
@@ -3015,12 +2985,20 @@ function RunMainScript()
             ["rbxassetid://78935059863801"] = true,
             ["rbxassetid://135002183282873"] = true,
             ["rbxassetid://121216847022485"] = true,
-            [" rbxassetid://82666958311998"] = true,
+            ["rbxassetid://82666958311998"] = true,
             ["rbxassetid://106871536134254"] = true,
             ["rbxassetid://109402730355822"] = true,
-            [" rbxassetid://117070354890871"] = true,
+            ["rbxassetid://117070354890871"] = true,
         }
-        local u1HbQDX1lwNUID = { ["ParryCooldown"] = false, ["ParryCooldownThread"] = nil }
+        -- Hybrid Parry: รองรับ AnimationId ที่เกมคืนมาในรูปแบบ URL/ตัวเลขต่างกัน
+        local MbnHqZNZxQUUqNumeric = {}
+        for animationId in pairs(MbnHqZNZxQUUq) do
+            local numericId = tostring(animationId):match("%d+")
+            if numericId then
+                MbnHqZNZxQUUqNumeric[numericId] = true
+            end
+        end
+        local u1HbQDX1lwNUID = { ["ParryCooldown"] = false, ["ParryCooldownThread"] = nil, ["LastAttempt"] = 0 }
         local O0IzvNmnD = {}
         local function UIFunction(DDvlQ)
             return DDvlQ["Team"] and DDvlQ["Team"]["Name"] == "Killer"
@@ -3073,6 +3051,25 @@ function RunMainScript()
             if u1HbQDX1lwNUID["ParryCooldown"] then
                 return
             end
+            -- ป้องกันการเรียกซ้ำถี่เกินไปก่อนที่ parryResult จะตอบกลับ
+            local now = os.clock()
+            if now - (u1HbQDX1lwNUID["LastAttempt"] or 0) < 0.15 then
+                return
+            end
+            u1HbQDX1lwNUID["LastAttempt"] = now
+            pcall(function()
+                local remotes = oZzw1oZIXX_["FindFirstChild"](oZzw1oZIXX_, "Remotes")
+                local items = remotes and remotes["FindFirstChild"](remotes, "Items")
+                local dagger = items and items["FindFirstChild"](items, "Parrying Dagger")
+                local parryRemote = dagger and dagger["FindFirstChild"](dagger, "parry")
+                if parryRemote then
+                    -- ส่งคำขอ Parry 5 ครั้งเพื่อเพิ่มโอกาสรับคำขอ โดยยังไม่รัวเท่าแบบ 10 ครั้ง
+                    for _ = 1, 5 do
+                        parryRemote["FireServer"](parryRemote)
+                        task["wait"](0.015)
+                    end
+                end
+            end)
             pcall(function()
                 task["spawn"](UIFunction4)
             end)
@@ -3128,7 +3125,8 @@ function RunMainScript()
             end)
             oQqDI["AnimationPlayed"]:Connect(function(W0UUQplOQx)
                 local _QuUMwunbZmmOZ = W0UUQplOQx["Animation"] and W0UUQplOQx["Animation"]["AnimationId"] or ""
-                local QHQDIM = MbnHqZNZxQUUq[_QuUMwunbZmmOZ]
+                local normalizedAnimationId = tostring(_QuUMwunbZmmOZ):match("%d+")
+                local QHQDIM = MbnHqZNZxQUUq[_QuUMwunbZmmOZ] or MbnHqZNZxQUUqNumeric[normalizedAnimationId]
                 if not QHQDIM then
                     return
                 end
@@ -3161,13 +3159,7 @@ function RunMainScript()
                         local vlpxWHvIXnm0o
                         local O0xmzNXpWX = os["clock"]()
                         vlpxWHvIXnm0o = WwNbnqHIQwppl["Heartbeat"]:Connect(function()
-                            if
-                                os["clock"]() - O0xmzNXpWX >= 1.5
-                                or u1HbQDX1lwNUID["ParryCooldown"]
-                                or not QvzxNXxpvz1xIl
-                                or not BIHMuUqlu
-                                or UIFunction2(wvppmNwnl)
-                            then
+                            if os["clock"]() - O0xmzNXpWX >= 1.5 or u1HbQDX1lwNUID["ParryCooldown"] or not QvzxNXxpvz1xIl or not BIHMuUqlu or UIFunction2(wvppmNwnl) then
                                 if vlpxWHvIXnm0o then
                                     vlpxWHvIXnm0o["Disconnect"](vlpxWHvIXnm0o)
                                 end
@@ -4052,9 +4044,7 @@ function RunMainScript()
                 if lopX_WWOqz["completedGenerators"][WbNXXpWu1ZmOxQ] then
                     return true
                 end
-                local MMNMNmDbNHv = WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "RepairProgress")
-                    or WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "Progress")
-                    or 0
+                local MMNMNmDbNHv = WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "RepairProgress") or WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "Progress") or 0
                 local Om_z0uNwzOq1l = (MMNMNmDbNHv >= 100)
                     or (WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "Completed") == true)
                     or (WbNXXpWu1ZmOxQ["GetAttribute"](WbNXXpWu1ZmOxQ, "IsCompleted") == true)
@@ -4198,9 +4188,7 @@ function RunMainScript()
             function MU_m1UmlXXDZ.UpdateObjectESPState(WZolNZZUQ, M0INvO)
                 local function ESPGeneratorFunction10()
                     local WUqQb = ESPGeneratorFunction6(WZolNZZUQ, "Dropped") or ESPGeneratorFunction6(WZolNZZUQ, "IsDropped")
-                    local pzUbHnvIUp = ESPGeneratorFunction6(WZolNZZUQ, "Broken")
-                        or ESPGeneratorFunction6(WZolNZZUQ, "IsBroken")
-                        or ESPGeneratorFunction6(WZolNZZUQ, "Destroyed")
+                    local pzUbHnvIUp = ESPGeneratorFunction6(WZolNZZUQ, "Broken") or ESPGeneratorFunction6(WZolNZZUQ, "IsBroken") or ESPGeneratorFunction6(WZolNZZUQ, "Destroyed")
                     if WUqQb or pzUbHnvIUp or M0INvO["isFake"] then
                         ESPGeneratorFunction8(WZolNZZUQ)
                         for O0qOuDQu, OXvXUQz in ipairs(lopX_WWOqz["cachedMapObjects"]["Pallets"]) do
@@ -4988,10 +4976,7 @@ function RunMainScript()
                 local DWUvuqUIIompN = math.max(8, math["round"](25 * oqvpUx))
                 local up1H1OlXbp = MU_m1UmlXXDZ.wxnlux0OXxv
                 local DbH_mq0vnz = math["round"](DWUvuqUIIompN * 0.25)
-                table.insert(
-                    Hnx00UNu0OqwO,
-                    MU_m1UmlXXDZ.CreateESPLabel(up1H1OlXbp, up1H1OlXbp - DbH_mq0vnz, DWUvuqUIIompN, oWnOuMOxx, 0, W_wQm_pxvl1HX, HvQIMH)
-                )
+                table.insert(Hnx00UNu0OqwO, MU_m1UmlXXDZ.CreateESPLabel(up1H1OlXbp, up1H1OlXbp - DbH_mq0vnz, DWUvuqUIIompN, oWnOuMOxx, 0, W_wQm_pxvl1HX, HvQIMH))
                 table.insert(
                     Hnx00UNu0OqwO,
                     MU_m1UmlXXDZ.CreateESPLabel(up1H1OlXbp, up1H1OlXbp - DbH_mq0vnz + DWUvuqUIIompN / 2, oWnOuMOxx, DWUvuqUIIompN, 0, W_wQm_pxvl1HX, HvQIMH)
@@ -5008,99 +4993,35 @@ function RunMainScript()
                 local HlHZIXHv1UvXWI = Hl0Ovu / 2
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2,
-                        _ZXu0uquImx - HlHZIXHv1UvXWI,
-                        IzZDQMI,
-                        uo_bNDOX,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2, _ZXu0uquImx - HlHZIXHv1UvXWI, IzZDQMI, uo_bNDOX, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx - HlHZIXHv1UvXWI,
-                        _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2,
-                        uo_bNDOX,
-                        IzZDQMI,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx - HlHZIXHv1UvXWI, _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2, uo_bNDOX, IzZDQMI, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2,
-                        _ZXu0uquImx - HlHZIXHv1UvXWI,
-                        IzZDQMI,
-                        uo_bNDOX,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2, _ZXu0uquImx - HlHZIXHv1UvXWI, IzZDQMI, uo_bNDOX, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx + HlHZIXHv1UvXWI,
-                        _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2,
-                        uo_bNDOX,
-                        IzZDQMI,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx + HlHZIXHv1UvXWI, _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2, uo_bNDOX, IzZDQMI, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2,
-                        _ZXu0uquImx + HlHZIXHv1UvXWI,
-                        IzZDQMI,
-                        uo_bNDOX,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx - HlHZIXHv1UvXWI + IzZDQMI / 2, _ZXu0uquImx + HlHZIXHv1UvXWI, IzZDQMI, uo_bNDOX, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx - HlHZIXHv1UvXWI,
-                        _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2,
-                        uo_bNDOX,
-                        IzZDQMI,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx - HlHZIXHv1UvXWI, _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2, uo_bNDOX, IzZDQMI, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2,
-                        _ZXu0uquImx + HlHZIXHv1UvXWI,
-                        IzZDQMI,
-                        uo_bNDOX,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2, _ZXu0uquImx + HlHZIXHv1UvXWI, IzZDQMI, uo_bNDOX, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 table.insert(
                     puNzOQD1NDU1UW,
-                    MU_m1UmlXXDZ.CreateESPLabel(
-                        _ZXu0uquImx + HlHZIXHv1UvXWI,
-                        _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2,
-                        uo_bNDOX,
-                        IzZDQMI,
-                        0,
-                        vNwXoHvlQIpIb_,
-                        Q0lqIbu
-                    )
+                    MU_m1UmlXXDZ.CreateESPLabel(_ZXu0uquImx + HlHZIXHv1UvXWI, _ZXu0uquImx + HlHZIXHv1UvXWI - IzZDQMI / 2, uo_bNDOX, IzZDQMI, 0, vNwXoHvlQIpIb_, Q0lqIbu)
                 )
                 return puNzOQD1NDU1UW, {}, {}
             end
@@ -5213,8 +5134,7 @@ function RunMainScript()
                     return
                 end
                 local BHQzXMwINzmzv = wqDNn["ViewportSize"]
-                self["container"]["Position"] =
-                    UDim2["fromOffset"](BHQzXMwINzmzv["X"] * 0.5 + self["currentOffset"]["X"], BHQzXMwINzmzv["Y"] * 0.5 + self["currentOffset"]["Y"])
+                self["container"]["Position"] = UDim2["fromOffset"](BHQzXMwINzmzv["X"] * 0.5 + self["currentOffset"]["X"], BHQzXMwINzmzv["Y"] * 0.5 + self["currentOffset"]["Y"])
             end
             function MU_m1UmlXXDZ.CrosshairMethod:_hookCamera()
                 if self["connections"]["camViewport"] then
@@ -5468,10 +5388,7 @@ function RunMainScript()
                         end
                     end)
                     qq_IZlOl1["InputEnded"]:Connect(function(lpvXox1UoznWnx)
-                        if
-                            lpvXox1UoznWnx["UserInputType"] == Enum["UserInputType"]["Touch"]
-                            or lpvXox1UoznWnx["UserInputType"] == Enum["UserInputType"]["MouseButton1"]
-                        then
+                        if lpvXox1UoznWnx["UserInputType"] == Enum["UserInputType"]["Touch"] or lpvXox1UoznWnx["UserInputType"] == Enum["UserInputType"]["MouseButton1"] then
                             MU_m1UmlXXDZ.NxWuWb = 0
                             qq_IZlOl1["ImageColor3"] = Color3["fromRGB"](170, 170, 170)
                             qq_IZlOl1["ImageTransparency"] = 0.25
@@ -5771,11 +5688,7 @@ function RunMainScript()
                 for Nv1zv1UWm, N0wQnNQOQbQO0q in ipairs(Hq00mww["GetDescendants"](Hq00mww)) do
                     if
                         N0wQnNQOQbQO0q["Name"] == "Flashlight"
-                        and (
-                            N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Model")
-                            or N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Tool")
-                            or N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Accessory")
-                        )
+                        and (N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Model") or N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Tool") or N0wQnNQOQbQO0q["IsA"](N0wQnNQOQbQO0q, "Accessory"))
                     then
                         return true
                     end
@@ -5804,9 +5717,7 @@ function RunMainScript()
                 if wo1u0zbDnIDzX and wo1u0zbDnIDzX["IsA"](wo1u0zbDnIDzX, "BasePart") then
                     return wo1u0zbDnIDzX
                 end
-                return __z_pql["FindFirstChild"](__z_pql, "UpperTorso")
-                    or __z_pql["FindFirstChild"](__z_pql, "Torso")
-                    or __z_pql["FindFirstChild"](__z_pql, "HumanoidRootPart")
+                return __z_pql["FindFirstChild"](__z_pql, "UpperTorso") or __z_pql["FindFirstChild"](__z_pql, "Torso") or __z_pql["FindFirstChild"](__z_pql, "HumanoidRootPart")
             end
             function MU_m1UmlXXDZ.FlashlightMethod2()
                 local qOQDNo1xx = Q_qlzpNO1["Character"]
@@ -5882,8 +5793,7 @@ function RunMainScript()
                     local IHonooQzmHUXD = Q_qlzpNO1["Character"]
                     local BUlZZpXOXnNDb = IHonooQzmHUXD and IHonooQzmHUXD["FindFirstChild"](IHonooQzmHUXD, "HumanoidRootPart")
                     if BUlZZpXOXnNDb then
-                        BUlZZpXOXnNDb["CFrame"] =
-                            CFrame["new"](BUlZZpXOXnNDb["Position"], Vector3["new"](NqnmOqv["X"], BUlZZpXOXnNDb["Position"]["Y"], NqnmOqv["Z"]))
+                        BUlZZpXOXnNDb["CFrame"] = CFrame["new"](BUlZZpXOXnNDb["Position"], Vector3["new"](NqnmOqv["X"], BUlZZpXOXnNDb["Position"]["Y"], NqnmOqv["Z"]))
                     end
                 end)
             end)
@@ -5913,11 +5823,7 @@ function RunMainScript()
                     if not QMxmvD then
                         local buWW1n = Q_qlzpNO1["FindFirstChildOfClass"](Q_qlzpNO1, "PlayerGui")
                         if buWW1n then
-                            if
-                                buWW1n["FindFirstChild"](buWW1n, "Hidden-mob")
-                                or buWW1n["FindFirstChild"](buWW1n, "Hidden")
-                                or buWW1n["FindFirstChild"](buWW1n, "Hidden-con")
-                            then
+                            if buWW1n["FindFirstChild"](buWW1n, "Hidden-mob") or buWW1n["FindFirstChild"](buWW1n, "Hidden") or buWW1n["FindFirstChild"](buWW1n, "Hidden-con") then
                                 QMxmvD = "hidden"
                             elseif buWW1n["FindFirstChild"](buWW1n, "Slasher-mob") or buWW1n["FindFirstChild"](buWW1n, "Slasher") then
                                 QMxmvD = "mayers"
@@ -6534,8 +6440,7 @@ function RunMainScript()
                         local wQOwIzH, WmQ00bDWv, OqOxNH, _QWQI = __vXHDM, WOHopZwIXZWD, IlD_zzO, bwWIqq
                         for oN1MXHumXUWxv = -3, 3 do
                             local WMpU_Ox0I0Q_b = math.clamp(__vXHDM + MuvMHOWDQ * (oN1MXHumXUWxv / 3), pZN_MQIDuIUM, OqpnQq)
-                            local WwlzO_bzMMp_, IDUmoI1n_XHZNX, _XZqZqqZxuZ =
-                                MU_m1UmlXXDZ.SystemMethod9(bOlUnlIbU, lQqlXW__oo1Z, WMpU_Ox0I0Q_b, DpWlpZMO, pz_vWInxwDzx)
+                            local WwlzO_bzMMp_, IDUmoI1n_XHZNX, _XZqZqqZxuZ = MU_m1UmlXXDZ.SystemMethod9(bOlUnlIbU, lQqlXW__oo1Z, WMpU_Ox0I0Q_b, DpWlpZMO, pz_vWInxwDzx)
                             if WwlzO_bzMMp_ and WwlzO_bzMMp_ < WmQ00bDWv then
                                 WmQ00bDWv, OqOxNH, wQOwIzH, _QWQI = WwlzO_bzMMp_, IDUmoI1n_XHZNX, WMpU_Ox0I0Q_b, _XZqZqqZxuZ
                             end
@@ -6656,12 +6561,7 @@ function RunMainScript()
                 pcall(function()
                     local QNZUQ_Qq
                     QNZUQ_Qq = hookmetamethod(game, "__index", function(NHwOH_WMvIXv, HInINqm)
-                        if
-                            HInINqm == "FireServer"
-                            and typeof(NHwOH_WMvIXv) == "Instance"
-                            and MU_m1UmlXXDZ.MlUwlW1bU
-                            and rawequal(NHwOH_WMvIXv, MU_m1UmlXXDZ.MlUwlW1bU)
-                        then
+                        if HInINqm == "FireServer" and typeof(NHwOH_WMvIXv) == "Instance" and MU_m1UmlXXDZ.MlUwlW1bU and rawequal(NHwOH_WMvIXv, MU_m1UmlXXDZ.MlUwlW1bU) then
                             return (newcclosure or function(w1mvmb)
                                 return w1mvmb
                             end)(function(...)
@@ -6744,8 +6644,7 @@ function RunMainScript()
                             if not vOpXzq1v1OXlv then
                                 return
                             end
-                            local qMWZ_0wuwzm = vOpXzq1v1OXlv["FindFirstChild"](vOpXzq1v1OXlv, "Control")
-                                or vOpXzq1v1OXlv["FindFirstChild"](vOpXzq1v1OXlv, "Controls")
+                            local qMWZ_0wuwzm = vOpXzq1v1OXlv["FindFirstChild"](vOpXzq1v1OXlv, "Control") or vOpXzq1v1OXlv["FindFirstChild"](vOpXzq1v1OXlv, "Controls")
                             if qMWZ_0wuwzm then
                                 local function SpearFunction2(lMX1I)
                                     for BN1oXmmp, H_x_UIHw in ipairs(lMX1I["GetChildren"](lMX1I)) do
@@ -6889,12 +6788,7 @@ function RunMainScript()
                     if DOqvHqm0mDHzub then
                         local b0DUOOzUQXoupo = DOqvHqm0mDHzub["FindFirstChildOfClass"](DOqvHqm0mDHzub, "Humanoid")
                         local Wzpl_qXZOwWU = MU_m1UmlXXDZ.AimbotMethod4(DOqvHqm0mDHzub)
-                        if
-                            Wzpl_qXZOwWU
-                            and b0DUOOzUQXoupo
-                            and b0DUOOzUQXoupo["Health"] > 50
-                            and not DOqvHqm0mDHzub["GetAttribute"](DOqvHqm0mDHzub, "IsHooked")
-                        then
+                        if Wzpl_qXZOwWU and b0DUOOzUQXoupo and b0DUOOzUQXoupo["Health"] > 50 and not DOqvHqm0mDHzub["GetAttribute"](DOqvHqm0mDHzub, "IsHooked") then
                             local vZlDDbonN, QXumQlHxXb = BmmDuwIDu["WorldToViewportPoint"](BmmDuwIDu, Wzpl_qXZOwWU)
                             if QXumQlHxXb then
                                 local HzXXoON = (Vector2["new"](vZlDDbonN["X"], vZlDDbonN["Y"]) - uv0UQmXNOOOm)["Magnitude"]
@@ -6993,8 +6887,7 @@ function RunMainScript()
                     MU_m1UmlXXDZ.blnzDmopMD_Mzn["BackgroundColor3"] = wDUMIoIXWzpm0O
                     MU_m1UmlXXDZ.blnzDmopMD_Mzn["BackgroundTransparency"] = omxQQHI1m
                     MU_m1UmlXXDZ.blnzDmopMD_Mzn["Size"] = UDim2["fromOffset"](pmpWwouIDmlUIn, HbUQw and 2 or 1)
-                    MU_m1UmlXXDZ.blnzDmopMD_Mzn["Position"] =
-                        UDim2["fromOffset"]((BmmvXzlOq["X"] + Ozmbwnll1luQu["X"]) * 0.5, (BmmvXzlOq["Y"] + Ozmbwnll1luQu["Y"]) * 0.5)
+                    MU_m1UmlXXDZ.blnzDmopMD_Mzn["Position"] = UDim2["fromOffset"]((BmmvXzlOq["X"] + Ozmbwnll1luQu["X"]) * 0.5, (BmmvXzlOq["Y"] + Ozmbwnll1luQu["Y"]) * 0.5)
                     MU_m1UmlXXDZ.blnzDmopMD_Mzn["Rotation"] = math["deg"](math["atan2"](vp1lp["Y"], vp1lp["X"]))
                     MU_m1UmlXXDZ.blnzDmopMD_Mzn["Visible"] = true
                     MU_m1UmlXXDZ.qnplm0_bD0p["BackgroundColor3"] = wDUMIoIXWzpm0O
@@ -7220,7 +7113,8 @@ function RunMainScript()
                                 local MNl_mIx0Wqo_, HbUQH = MU_m1UmlXXDZ.SystemMethod10(DNQnMHMHIvHm1, lWlbuXl_m1Uz, D0uZWQq0mw, Blox_0pvwzpNq)
                                 if MNl_mIx0Wqo_ and HbUQH then
                                     local uDnmIQ1l0 = MU_m1UmlXXDZ.CharacterMethod3() * (tonumber(_1OUbnbM["spearPingLead"]) or 1.0)
-                                    local vMInOIWD = MU_m1UmlXXDZ.IuHN1moN * ((HbUQH + uDnmIQ1l0) * WU1_w_0)
+                                    local velocityLead = math.clamp(tonumber(_1OUbnbM["spearVelocityLead"]) or 1.0, 0.5, 1.5)
+                                    local vMInOIWD = MU_m1UmlXXDZ.IuHN1moN * ((HbUQH + uDnmIQ1l0) * WU1_w_0) * velocityLead
                                     local qpvDU_vmUu = math.max(qHWwHb_xWlu * 0.4, 4)
                                     if vMInOIWD["Magnitude"] > qpvDU_vmUu then
                                         vMInOIWD = vMInOIWD["Unit"] * qpvDU_vmUu
@@ -7291,8 +7185,7 @@ function RunMainScript()
             function MU_m1UmlXXDZ.IsVaultPart()
                 local WMl_1M1znOoN = false
                 local function VaultFunction(IwnDIZIQWHwbWx)
-                    return IwnDIZIQWHwbWx["IsA"](IwnDIZIQWHwbWx, "BasePart")
-                        and (IwnDIZIQWHwbWx["Name"] == "VaultTrigger" or IwnDIZIQWHwbWx["Name"] == "VaultPoint")
+                    return IwnDIZIQWHwbWx["IsA"](IwnDIZIQWHwbWx, "BasePart") and (IwnDIZIQWHwbWx["Name"] == "VaultTrigger" or IwnDIZIQWHwbWx["Name"] == "VaultPoint")
                 end
                 local function VaultFunction2(bUQw0b)
                     if not VaultFunction(bUQw0b) then
@@ -7425,8 +7318,7 @@ function RunMainScript()
                         if character and root then
                             character:SetAttribute("Sprinting", true)
                             character:SetAttribute("IsRunning", true)
-                            local pos = WQzZUmp1HZ
-                                and (WQzZUmp1HZ["Position"] or (WQzZUmp1HZ:IsA("Model") and WQzZUmp1HZ.PrimaryPart and WQzZUmp1HZ.PrimaryPart.Position))
+                            local pos = WQzZUmp1HZ and (WQzZUmp1HZ["Position"] or (WQzZUmp1HZ:IsA("Model") and WQzZUmp1HZ.PrimaryPart and WQzZUmp1HZ.PrimaryPart.Position))
                             if pos then
                                 local dir = Vector3.new(pos.X - root.Position.X, 0, pos.Z - root.Position.Z)
                                 if dir.Magnitude > 0.05 then
@@ -7573,10 +7465,7 @@ function RunMainScript()
                         local H1UXNvzUuDpw, vDUHp1m = pcall(function()
                             return ppmOvzl["Name"]:lower()
                         end)
-                        if
-                            H1UXNvzUuDpw
-                            and (vDUHp1m["find"](vDUHp1m, "falldamage") or vDUHp1m["find"](vDUHp1m, "fall") or vDUHp1m["find"](vDUHp1m, "ragdollfall"))
-                        then
+                        if H1UXNvzUuDpw and (vDUHp1m["find"](vDUHp1m, "falldamage") or vDUHp1m["find"](vDUHp1m, "fall") or vDUHp1m["find"](vDUHp1m, "ragdollfall")) then
                             return
                         end
                     end
@@ -7700,10 +7589,7 @@ function RunMainScript()
                 while not _1OUbnbM["Destroyed"] do
                     if _1OUbnbM["Fullbright"] then
                         local qbpvDlN1Q0uXW = _1OUbnbM["VIS_WeatherTheme"] and MU_m1UmlXXDZ._wMoHuNI[_1OUbnbM["VIS_WeatherTheme"]]
-                        local qmuINZ1zX1n = _1OUbnbM["VIS_WeatherTheme"]
-                            and _1OUbnbM["VIS_WeatherTheme"] ~= "Default"
-                            and qbpvDlN1Q0uXW
-                            and qbpvDlN1Q0uXW["Lighting"]
+                        local qmuINZ1zX1n = _1OUbnbM["VIS_WeatherTheme"] and _1OUbnbM["VIS_WeatherTheme"] ~= "Default" and qbpvDlN1Q0uXW and qbpvDlN1Q0uXW["Lighting"]
                         if qmuINZ1zX1n then
                             for px11N, IvDIxHZ in pairs(qbpvDlN1Q0uXW["Lighting"]) do
                                 pcall(function()
@@ -7960,18 +7846,12 @@ function RunMainScript()
                             BnQZQ = nil
                         end
                         uZwM0XwbNUlwq["InputBegan"]:Connect(function(Dpn0zQzp)
-                            if
-                                Dpn0zQzp["UserInputType"] == Enum["UserInputType"]["Touch"]
-                                or Dpn0zQzp["UserInputType"] == Enum["UserInputType"]["MouseButton2"]
-                            then
+                            if Dpn0zQzp["UserInputType"] == Enum["UserInputType"]["Touch"] or Dpn0zQzp["UserInputType"] == Enum["UserInputType"]["MouseButton2"] then
                                 MU_m1UmlXXDZ.bIMHzDvqolp = true
                             end
                         end)
                         uZwM0XwbNUlwq["InputEnded"]:Connect(function(HHWNw0lbn)
-                            if
-                                HHWNw0lbn["UserInputType"] == Enum["UserInputType"]["Touch"]
-                                or HHWNw0lbn["UserInputType"] == Enum["UserInputType"]["MouseButton2"]
-                            then
+                            if HHWNw0lbn["UserInputType"] == Enum["UserInputType"]["Touch"] or HHWNw0lbn["UserInputType"] == Enum["UserInputType"]["MouseButton2"] then
                                 MU_m1UmlXXDZ.bIMHzDvqolp = false
                             end
                         end)
@@ -7992,204 +7872,221 @@ function RunMainScript()
             end)
             getgenv()["VD"] = getgenv()["VD"] or {}
             _1OUbnbM["fpsBoosterEnabled"] = _1OUbnbM["fpsBoosterEnabled"] or false
-            MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm = game["GetService"](game, "Lighting")
-            MU_m1UmlXXDZ.qbO1XqIuHMnm = workspace["FindFirstChildOfClass"](workspace, "Terrain")
-            MU_m1UmlXXDZ.wvvmHwUuH = {
-                ["GlobalShadows"] = MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["GlobalShadows"],
-                ["FogEnd"] = MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["FogEnd"],
-                ["Brightness"] = MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["Brightness"],
-                ["EnvironmentDiffuseScale"] = MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentDiffuseScale"],
-                ["EnvironmentSpecularScale"] = MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentSpecularScale"],
+            _1OUbnbM["clayModeEnabled"] = _1OUbnbM["clayModeEnabled"] or false
+
+            local PerformanceLighting = game:GetService("Lighting")
+            local PerformanceTerrain = workspace:FindFirstChildOfClass("Terrain")
+            local PerformanceFPSCache = {
+                Lighting = {},
+                Terrain = {},
+                Objects = {},
+                Cached = false,
             }
-            MU_m1UmlXXDZ.bWQOwH1nMbZvIv = MU_m1UmlXXDZ.qbO1XqIuHMnm
-                    and {
-                        ["WaterWaveSize"] = MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSize"],
-                        ["WaterWaveSpeed"] = MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSpeed"],
-                        ["WaterTransparency"] = MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterTransparency"],
-                        ["WaterReflectance"] = MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterReflectance"],
-                    }
-                or nil
-            MU_m1UmlXXDZ.wpwzQ = {}
-            function MU_m1UmlXXDZ.ApplyPerformanceBoost()
-                if not _1OUbnbM["fpsBoosterEnabled"] then
-                    return
+            local PerformanceClayCache = {}
+
+            local function PerformanceRemember(cache, object, properties)
+                if cache[object] == nil then
+                    cache[object] = properties
+                end
+            end
+
+            local function PerformanceApplyLighting()
+                if not PerformanceFPSCache.Cached then
+                    PerformanceRemember(PerformanceFPSCache.Lighting, PerformanceLighting, {
+                        GlobalShadows = PerformanceLighting.GlobalShadows,
+                        FogEnd = PerformanceLighting.FogEnd,
+                        EnvironmentDiffuseScale = PerformanceLighting.EnvironmentDiffuseScale,
+                        EnvironmentSpecularScale = PerformanceLighting.EnvironmentSpecularScale,
+                    })
+                    for _, child in ipairs(PerformanceLighting:GetChildren()) do
+                        if child:IsA("PostEffect") or child:IsA("Atmosphere") or child:IsA("Sky") then
+                            PerformanceRemember(PerformanceFPSCache.Objects, child, { Enabled = child.Enabled })
+                        end
+                    end
+                    if PerformanceTerrain then
+                        PerformanceRemember(PerformanceFPSCache.Terrain, PerformanceTerrain, {
+                            WaterWaveSize = PerformanceTerrain.WaterWaveSize,
+                            WaterWaveSpeed = PerformanceTerrain.WaterWaveSpeed,
+                            WaterTransparency = PerformanceTerrain.WaterTransparency,
+                            WaterReflectance = PerformanceTerrain.WaterReflectance,
+                        })
+                    end
+                    PerformanceFPSCache.Cached = true
                 end
                 pcall(function()
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["GlobalShadows"] = false
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["FogEnd"] = 999999
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentDiffuseScale"] = 0
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentSpecularScale"] = 0
-                    for IopQl1Wpwv0bDO, MQZQXI_ in ipairs(MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["GetChildren"](MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm)) do
-                        if MQZQXI_["IsA"](MQZQXI_, "PostEffect") or MQZQXI_["IsA"](MQZQXI_, "Atmosphere") or MQZQXI_["IsA"](MQZQXI_, "Sky") then
-                            MQZQXI_["Enabled"] = false
+                    PerformanceLighting.GlobalShadows = false
+                    PerformanceLighting.FogEnd = 1000000
+                    PerformanceLighting.EnvironmentDiffuseScale = 0
+                    PerformanceLighting.EnvironmentSpecularScale = 0
+                    for _, child in ipairs(PerformanceLighting:GetChildren()) do
+                        if child:IsA("PostEffect") or child:IsA("Atmosphere") or child:IsA("Sky") then
+                            child.Enabled = false
                         end
                     end
-                    if MU_m1UmlXXDZ.qbO1XqIuHMnm then
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSize"] = 0
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSpeed"] = 0
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterTransparency"] = 1
-                    end
-                    for BnZbvQwI, o0lWOnUmN in ipairs(workspace["GetDescendants"](workspace)) do
-                        if BnZbvQwI % 150 == 0 then
-                            task.wait()
-                            if not _1OUbnbM["fpsBoosterEnabled"] then
-                                return
-                            end
-                        end
-                        if o0lWOnUmN["IsA"](o0lWOnUmN, "BasePart") then
-                            MU_m1UmlXXDZ.wpwzQ[o0lWOnUmN] =
-                                { ["CastShadow"] = o0lWOnUmN["CastShadow"], ["Material"] = o0lWOnUmN["Material"], ["Reflectance"] = o0lWOnUmN["Reflectance"] }
-                            o0lWOnUmN["CastShadow"] = false
-                            o0lWOnUmN["Material"] = Enum["Material"]["SmoothPlastic"]
-                            o0lWOnUmN["Reflectance"] = 0
-                        elseif o0lWOnUmN["IsA"](o0lWOnUmN, "Decal") or o0lWOnUmN["IsA"](o0lWOnUmN, "Texture") then
-                            o0lWOnUmN["Transparency"] = 1
-                        elseif
-                            o0lWOnUmN["IsA"](o0lWOnUmN, "ParticleEmitter")
-                            or o0lWOnUmN["IsA"](o0lWOnUmN, "Trail")
-                            or o0lWOnUmN["IsA"](o0lWOnUmN, "Fire")
-                            or o0lWOnUmN["IsA"](o0lWOnUmN, "Smoke")
-                            or o0lWOnUmN["IsA"](o0lWOnUmN, "Sparkles")
-                        then
-                            o0lWOnUmN["Enabled"] = false
-                        end
+                    if PerformanceTerrain then
+                        PerformanceTerrain.WaterWaveSize = 0
+                        PerformanceTerrain.WaterWaveSpeed = 0
+                        PerformanceTerrain.WaterTransparency = 1
+                        PerformanceTerrain.WaterReflectance = 0
                     end
                 end)
             end
-            function MU_m1UmlXXDZ.RestorePerformanceSettings()
+
+            local function PerformanceApplyObjects()
+                local descendants = workspace:GetDescendants()
+                for index, object in ipairs(descendants) do
+                    if index % 200 == 0 then
+                        task.wait()
+                        if not _1OUbnbM["fpsBoosterEnabled"] then
+                            return
+                        end
+                    end
+                    pcall(function()
+                        if object:IsA("BasePart") then
+                            PerformanceRemember(PerformanceFPSCache.Objects, object, {
+                                CastShadow = object.CastShadow,
+                                Material = object.Material,
+                                Reflectance = object.Reflectance,
+                            })
+                            object.CastShadow = false
+                            object.Material = Enum.Material.SmoothPlastic
+                            object.Reflectance = 0
+                        elseif object:IsA("Decal") or object:IsA("Texture") then
+                            PerformanceRemember(PerformanceFPSCache.Objects, object, { Transparency = object.Transparency })
+                            object.Transparency = 1
+                        elseif object:IsA("ParticleEmitter") or object:IsA("Trail") or object:IsA("Fire") or object:IsA("Smoke") or object:IsA("Sparkles") then
+                            PerformanceRemember(PerformanceFPSCache.Objects, object, { Enabled = object.Enabled })
+                            object.Enabled = false
+                        end
+                    end)
+                end
+            end
+
+            function ApplyFPSBooster()
+                _1OUbnbM["fpsBoosterEnabled"] = true
+                PerformanceApplyLighting()
+                task.spawn(PerformanceApplyObjects)
+            end
+
+            function RevertFPSBooster()
+                _1OUbnbM["fpsBoosterEnabled"] = false
                 pcall(function()
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["GlobalShadows"] = MU_m1UmlXXDZ.wvvmHwUuH["GlobalShadows"]
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["FogEnd"] = MU_m1UmlXXDZ.wvvmHwUuH["FogEnd"]
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["Brightness"] = MU_m1UmlXXDZ.wvvmHwUuH["Brightness"]
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentDiffuseScale"] = MU_m1UmlXXDZ.wvvmHwUuH["EnvironmentDiffuseScale"]
-                    MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["EnvironmentSpecularScale"] = MU_m1UmlXXDZ.wvvmHwUuH["EnvironmentSpecularScale"]
-                    for qDXZwnX_zIop_W, MWDbXI in ipairs(MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm["GetChildren"](MU_m1UmlXXDZ.QbNUwQ0QwNX_Hm)) do
-                        if MWDbXI["IsA"](MWDbXI, "PostEffect") or MWDbXI["IsA"](MWDbXI, "Atmosphere") or MWDbXI["IsA"](MWDbXI, "Sky") then
-                            MWDbXI["Enabled"] = true
+                    for object, properties in pairs(PerformanceFPSCache.Objects) do
+                        if object and object.Parent then
+                            for property, value in pairs(properties) do
+                                pcall(function()
+                                    object[property] = value
+                                end)
+                            end
                         end
                     end
-                    if MU_m1UmlXXDZ.qbO1XqIuHMnm and MU_m1UmlXXDZ.bWQOwH1nMbZvIv then
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSize"] = MU_m1UmlXXDZ.bWQOwH1nMbZvIv["WaterWaveSize"]
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterWaveSpeed"] = MU_m1UmlXXDZ.bWQOwH1nMbZvIv["WaterWaveSpeed"]
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterTransparency"] = MU_m1UmlXXDZ.bWQOwH1nMbZvIv["WaterTransparency"]
-                        MU_m1UmlXXDZ.qbO1XqIuHMnm["WaterReflectance"] = MU_m1UmlXXDZ.bWQOwH1nMbZvIv["WaterReflectance"]
-                    end
-                    local restoreIndex = 0
-                    for ou_xUIzq, WwxMunzo in pairs(MU_m1UmlXXDZ.wpwzQ) do
-                        restoreIndex = restoreIndex + 1
-                        if restoreIndex % 150 == 0 then
-                            task.wait()
-                        end
-                        if ou_xUIzq and ou_xUIzq["Parent"] then
-                            ou_xUIzq["CastShadow"] = WwxMunzo["CastShadow"]
-                            ou_xUIzq["Material"] = WwxMunzo["Material"]
-                            ou_xUIzq["Reflectance"] = WwxMunzo["Reflectance"]
+                    for object, properties in pairs(PerformanceFPSCache.Lighting) do
+                        if object and object.Parent then
+                            for property, value in pairs(properties) do
+                                pcall(function()
+                                    object[property] = value
+                                end)
+                            end
                         end
                     end
-                    MU_m1UmlXXDZ.wpwzQ = {}
+                    for object, properties in pairs(PerformanceFPSCache.Terrain) do
+                        if object and object.Parent then
+                            for property, value in pairs(properties) do
+                                pcall(function()
+                                    object[property] = value
+                                end)
+                            end
+                        end
+                    end
                 end)
+                PerformanceFPSCache.Objects = {}
+                PerformanceFPSCache.Lighting = {}
+                PerformanceFPSCache.Terrain = {}
+                PerformanceFPSCache.Cached = false
             end
-            getgenv()["VD"] = getgenv()["VD"] or {}
-            _1OUbnbM["clayModeEnabled"] = _1OUbnbM["clayModeEnabled"] or false
-            MU_m1UmlXXDZ.QzZmZ_ = {}
-            function MU_m1UmlXXDZ.CachePartMaterials()
+
+            local function PerformanceApplyClay()
+                local descendants = workspace:GetDescendants()
+                for index, object in ipairs(descendants) do
+                    if index % 200 == 0 then
+                        task.wait()
+                        if not _1OUbnbM["clayModeEnabled"] then
+                            return
+                        end
+                    end
+                    pcall(function()
+                        if object:IsA("BasePart") then
+                            PerformanceRemember(PerformanceClayCache, object, {
+                                Material = object.Material,
+                                Color = object.Color,
+                                Reflectance = object.Reflectance,
+                            })
+                            object.Material = Enum.Material.SmoothPlastic
+                            object.Reflectance = 0
+                        elseif object:IsA("Decal") or object:IsA("Texture") then
+                            PerformanceRemember(PerformanceClayCache, object, { Transparency = object.Transparency })
+                            object.Transparency = 1
+                        end
+                    end)
+                end
+            end
+
+            function ApplyClayMode()
+                _1OUbnbM["clayModeEnabled"] = true
+                task.spawn(PerformanceApplyClay)
+            end
+
+            function RevertClayMode()
+                _1OUbnbM["clayModeEnabled"] = false
                 pcall(function()
-                    for wXowl, WqIuWzODlpNv in ipairs(workspace["GetDescendants"](workspace)) do
-                        if wXowl % 150 == 0 then
-                            task.wait()
-                            if not _1OUbnbM["clayModeEnabled"] then
-                                return
-                            end
-                        end
-                        if WqIuWzODlpNv["IsA"](WqIuWzODlpNv, "BasePart") then
-                            if MU_m1UmlXXDZ.QzZmZ_[WqIuWzODlpNv] == nil then
-                                MU_m1UmlXXDZ.QzZmZ_[WqIuWzODlpNv] = {
-                                    ["Material"] = WqIuWzODlpNv["Material"],
-                                    ["Color"] = WqIuWzODlpNv["Color"],
-                                    ["Reflectance"] = WqIuWzODlpNv["Reflectance"],
-                                }
-                            end
-                            WqIuWzODlpNv["Material"] = Enum["Material"]["SmoothPlastic"]
-                            WqIuWzODlpNv["Reflectance"] = 0
-                        elseif WqIuWzODlpNv["IsA"](WqIuWzODlpNv, "Decal") or WqIuWzODlpNv["IsA"](WqIuWzODlpNv, "Texture") then
-                            if MU_m1UmlXXDZ.QzZmZ_[WqIuWzODlpNv] == nil then
-                                MU_m1UmlXXDZ.QzZmZ_[WqIuWzODlpNv] = { ["Transparency"] = WqIuWzODlpNv["Transparency"] }
-                            end
-                            WqIuWzODlpNv["Transparency"] = 1
-                        end
-                    end
-                end)
-            end
-            function MU_m1UmlXXDZ.RestorePartMaterials()
-                pcall(function()
-                    local restoreIndex = 0
-                    for oDWzOQoMI, vWXZU_IbUqXHDX in pairs(MU_m1UmlXXDZ.QzZmZ_) do
-                        restoreIndex = restoreIndex + 1
-                        if restoreIndex % 150 == 0 then
-                            task.wait()
-                        end
-                        if oDWzOQoMI and oDWzOQoMI["Parent"] then
-                            if oDWzOQoMI["IsA"](oDWzOQoMI, "BasePart") then
-                                oDWzOQoMI["Material"] = vWXZU_IbUqXHDX["Material"]
-                                oDWzOQoMI["Color"] = vWXZU_IbUqXHDX["Color"]
-                                oDWzOQoMI["Reflectance"] = vWXZU_IbUqXHDX["Reflectance"]
-                            elseif oDWzOQoMI["IsA"](oDWzOQoMI, "Decal") or oDWzOQoMI["IsA"](oDWzOQoMI, "Texture") then
-                                oDWzOQoMI["Transparency"] = vWXZU_IbUqXHDX["Transparency"]
+                    for object, properties in pairs(PerformanceClayCache) do
+                        if object and object.Parent then
+                            for property, value in pairs(properties) do
+                                pcall(function()
+                                    object[property] = value
+                                end)
                             end
                         end
                     end
-                    MU_m1UmlXXDZ.QzZmZ_ = {}
                 end)
+                PerformanceClayCache = {}
             end
-            workspace["DescendantAdded"]:Connect(function(lMDvx_pIQHbn)
+
+            workspace.DescendantAdded:Connect(function(object)
+                if _1OUbnbM["fpsBoosterEnabled"] then
+                    task.defer(function()
+                        pcall(function()
+                            if object:IsA("BasePart") then
+                                PerformanceRemember(
+                                    PerformanceFPSCache.Objects,
+                                    object,
+                                    { CastShadow = object.CastShadow, Material = object.Material, Reflectance = object.Reflectance }
+                                )
+                                object.CastShadow = false
+                                object.Material = Enum.Material.SmoothPlastic
+                                object.Reflectance = 0
+                            elseif object:IsA("Decal") or object:IsA("Texture") then
+                                PerformanceRemember(PerformanceFPSCache.Objects, object, { Transparency = object.Transparency })
+                                object.Transparency = 1
+                            end
+                        end)
+                    end)
+                end
                 if _1OUbnbM["clayModeEnabled"] then
-                    if lMDvx_pIQHbn["IsA"](lMDvx_pIQHbn, "BasePart") then
-                        if MU_m1UmlXXDZ.QzZmZ_[lMDvx_pIQHbn] == nil then
-                            MU_m1UmlXXDZ.QzZmZ_[lMDvx_pIQHbn] =
-                                { ["Material"] = lMDvx_pIQHbn["Material"], ["Color"] = lMDvx_pIQHbn["Color"], ["Reflectance"] = lMDvx_pIQHbn["Reflectance"] }
-                        end
-                        lMDvx_pIQHbn["Material"] = Enum["Material"]["SmoothPlastic"]
-                        lMDvx_pIQHbn["Reflectance"] = 0
-                    elseif lMDvx_pIQHbn["IsA"](lMDvx_pIQHbn, "Decal") or lMDvx_pIQHbn["IsA"](lMDvx_pIQHbn, "Texture") then
-                        if MU_m1UmlXXDZ.QzZmZ_[lMDvx_pIQHbn] == nil then
-                            MU_m1UmlXXDZ.QzZmZ_[lMDvx_pIQHbn] = { ["Transparency"] = lMDvx_pIQHbn["Transparency"] }
-                        end
-                        lMDvx_pIQHbn["Transparency"] = 1
-                    end
+                    task.defer(function()
+                        pcall(function()
+                            if object:IsA("BasePart") then
+                                PerformanceRemember(PerformanceClayCache, object, { Material = object.Material, Color = object.Color, Reflectance = object.Reflectance })
+                                object.Material = Enum.Material.SmoothPlastic
+                                object.Reflectance = 0
+                            elseif object:IsA("Decal") or object:IsA("Texture") then
+                                PerformanceRemember(PerformanceClayCache, object, { Transparency = object.Transparency })
+                                object.Transparency = 1
+                            end
+                        end)
+                    end)
                 end
             end)
-            function MU_m1UmlXXDZ.SetLowQualityMaterials()
-                pcall(function()
-                    for bWInnobzxlUl0, N_0uNpo0oDvUxH in pairs(MU_m1UmlXXDZ.QzZmZ_) do
-                        if bWInnobzxlUl0 and bWInnobzxlUl0["Parent"] then
-                            if bWInnobzxlUl0["IsA"](bWInnobzxlUl0, "BasePart") then
-                                bWInnobzxlUl0["Material"] = N_0uNpo0oDvUxH["Material"]
-                                bWInnobzxlUl0["Color"] = N_0uNpo0oDvUxH["Color"]
-                                bWInnobzxlUl0["Reflectance"] = N_0uNpo0oDvUxH["Reflectance"]
-                            elseif bWInnobzxlUl0["IsA"](bWInnobzxlUl0, "Decal") or bWInnobzxlUl0["IsA"](bWInnobzxlUl0, "Texture") then
-                                bWInnobzxlUl0["Transparency"] = N_0uNpo0oDvUxH["Transparency"]
-                            end
-                        end
-                    end
-                    MU_m1UmlXXDZ.QzZmZ_ = {}
-                end)
-            end
-            function MU_m1UmlXXDZ.SetLowQualityMaterialProperties()
-                pcall(function()
-                    for WlqQpm, v0QI01 in pairs(MU_m1UmlXXDZ.QzZmZ_) do
-                        if WlqQpm and WlqQpm["Parent"] then
-                            if WlqQpm["IsA"](WlqQpm, "BasePart") then
-                                WlqQpm["Material"] = v0QI01["Material"]
-                                WlqQpm["Color"] = v0QI01["Color"]
-                                WlqQpm["Reflectance"] = v0QI01["Reflectance"]
-                            elseif WlqQpm["IsA"](WlqQpm, "Decal") or WlqQpm["IsA"](WlqQpm, "Texture") then
-                                WlqQpm["Transparency"] = v0QI01["Transparency"]
-                            end
-                        end
-                    end
-                    MU_m1UmlXXDZ.QzZmZ_ = {}
-                end)
-            end
             MU_m1UmlXXDZ.OzQQzw1umQq = nil
             function MU_m1UmlXXDZ.UseHealingRemote()
                 local WDuq0z1Qo = Q_qlzpNO1["Character"]
@@ -9047,17 +8944,9 @@ function RunMainScript()
             ["Callback"] = function(ObXzxbW)
                 _1OUbnbM["KILLER_AntiBlind"] = ObXzxbW
                 if ObXzxbW then
-                    QolwvD0XnWnzM["Notify"](
-                        QolwvD0XnWnzM,
-                        "เปิดใช้งานระบบกันตาบอดจากไฟฉายแล้ว",
-                        3
-                    )
+                    QolwvD0XnWnzM["Notify"](QolwvD0XnWnzM, "เปิดใช้งานระบบกันตาบอดจากไฟฉายแล้ว", 3)
                 else
-                    QolwvD0XnWnzM["Notify"](
-                        QolwvD0XnWnzM,
-                        "ปิดใช้งานระบบกันตาบอดจากไฟฉายแล้ว",
-                        3
-                    )
+                    QolwvD0XnWnzM["Notify"](QolwvD0XnWnzM, "ปิดใช้งานระบบกันตาบอดจากไฟฉายแล้ว", 3)
                 end
             end,
         })
@@ -9126,6 +9015,16 @@ function RunMainScript()
             ["Default"] = _1OUbnbM["spearPrediction"],
             ["Callback"] = function(_NxulvMw)
                 _1OUbnbM["spearPrediction"] = _NxulvMw
+            end,
+        })
+        qmoNOXxnbpqI:AddSlider("spearVelocityLead", {
+            ["Text"] = "ตัวคูณนำหน้าเป้าหมาย",
+            ["Default"] = math.floor((_1OUbnbM["spearVelocityLead"] or 1.0) * 100),
+            ["Min"] = 50,
+            ["Max"] = 150,
+            ["Rounding"] = 0,
+            ["Callback"] = function(value)
+                _1OUbnbM["spearVelocityLead"] = math.clamp(value / 100, 0.5, 1.5)
             end,
         })
         qmoNOXxnbpqI:AddCheckbox("spearDamping", {
@@ -9359,6 +9258,200 @@ function RunMainScript()
                 ESPGeneratorFunction12()
             end,
         })
+        -- Fake Parry: เล่นแอนิเมชันหลอกฝั่ง client เท่านั้น ไม่ได้ส่งคำขอ Parry จริง
+        local ZeroFakeParryAnimations = {
+            Enten = "rbxassetid://127096285501517",
+            Stopwatch = "rbxassetid://81793464499285",
+            Fih = "rbxassetid://123307242865945",
+            BloodShield = "rbxassetid://75939529748815",
+        }
+        local ZeroFakeParry = {
+            Gui = nil,
+            Button = nil,
+            Track = nil,
+            Dragging = false,
+            DragStart = nil,
+            DragStartPos = nil,
+            Connections = {},
+        }
+        local function ZeroFakeParryDisconnect()
+            for _, connection in ipairs(ZeroFakeParry.Connections) do
+                pcall(function()
+                    connection:Disconnect()
+                end)
+            end
+            table.clear(ZeroFakeParry.Connections)
+        end
+        local function ZeroFakeParryParent()
+            if gethui then
+                local ok, result = pcall(gethui)
+                if ok and result then
+                    return result
+                end
+            end
+            local ok, result = pcall(function()
+                return game:GetService("CoreGui")
+            end)
+            if ok and result then
+                return result
+            end
+            return Q_qlzpNO1:FindFirstChild("PlayerGui")
+        end
+        local function ZeroPlayFakeParry()
+            if not _1OUbnbM["SURV_FakeParry"] then
+                return
+            end
+            local character = Q_qlzpNO1.Character
+            local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+            if not humanoid then
+                return
+            end
+            pcall(function()
+                if ZeroFakeParry.Track then
+                    ZeroFakeParry.Track:Stop()
+                end
+                local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator")
+                animator.Parent = humanoid
+                local animation = Instance.new("Animation")
+                animation.AnimationId = ZeroFakeParryAnimations[_1OUbnbM["SURV_FakeParryAnim"]] or ZeroFakeParryAnimations.Enten
+                local track = animator:LoadAnimation(animation)
+                track.Priority = Enum.AnimationPriority.Action
+                track:Play()
+                ZeroFakeParry.Track = track
+                track.Stopped:Connect(function()
+                    if ZeroFakeParry.Track == track then
+                        ZeroFakeParry.Track = nil
+                    end
+                    animation:Destroy()
+                end)
+            end)
+        end
+        local function ZeroFakeParryCreateButton()
+            local parent = ZeroFakeParryParent()
+            if not parent then
+                return
+            end
+            ZeroFakeParryDisconnect()
+            local old = parent:FindFirstChild("ZeroHubFakeParryUI")
+            if old then
+                old:Destroy()
+            end
+            ZeroFakeParry.Gui = Instance.new("ScreenGui")
+            ZeroFakeParry.Gui.Name = "ZeroHubFakeParryUI"
+            ZeroFakeParry.Gui.ResetOnSpawn = false
+            ZeroFakeParry.Gui.IgnoreGuiInset = true
+            ZeroFakeParry.Gui.DisplayOrder = 9997
+            ZeroFakeParry.Gui.Parent = parent
+            local button = Instance.new("TextButton")
+            button.Name = "FakeParryButton"
+            button.Size = UDim2.fromOffset(64, 64)
+            button.Position = UDim2.new(0.30, 0, 0.75, 0)
+            button.AnchorPoint = Vector2.new(0.5, 0.5)
+            button.BackgroundColor3 = Color3.fromRGB(20, 0, 30)
+            button.BackgroundTransparency = 0.15
+            button.Text = "FAKE\nPARRY"
+            button.TextColor3 = Color3.fromRGB(210, 160, 255)
+            button.TextScaled = true
+            button.Font = Enum.Font.GothamBlack
+            button.Visible = _1OUbnbM["SURV_FakeParry"] == true
+            button.ZIndex = 10
+            button.Parent = ZeroFakeParry.Gui
+            Instance.new("UICorner", button).CornerRadius = UDim.new(1, 0)
+            local stroke = Instance.new("UIStroke", button)
+            stroke.Color = Color3.fromRGB(150, 70, 255)
+            stroke.Thickness = 2
+            ZeroFakeParry.Button = button
+            table.insert(ZeroFakeParry.Connections, button.Activated:Connect(ZeroPlayFakeParry))
+            table.insert(
+                ZeroFakeParry.Connections,
+                button.InputBegan:Connect(function(input)
+                    if _1OUbnbM["SURV_FakeParryLocked"] then
+                        return
+                    end
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                        ZeroFakeParry.Dragging = true
+                        ZeroFakeParry.DragStart = input.Position
+                        ZeroFakeParry.DragStartPos = button.Position
+                    end
+                end)
+            )
+            table.insert(
+                ZeroFakeParry.Connections,
+                button.InputEnded:Connect(function(input)
+                    if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                        ZeroFakeParry.Dragging = false
+                    end
+                end)
+            )
+            table.insert(
+                ZeroFakeParry.Connections,
+                game:GetService("UserInputService").InputChanged:Connect(function(input)
+                    if
+                        ZeroFakeParry.Dragging
+                        and not _1OUbnbM["SURV_FakeParryLocked"]
+                        and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch)
+                    then
+                        local delta = input.Position - ZeroFakeParry.DragStart
+                        button.Position = UDim2.new(
+                            ZeroFakeParry.DragStartPos.X.Scale,
+                            ZeroFakeParry.DragStartPos.X.Offset + delta.X,
+                            ZeroFakeParry.DragStartPos.Y.Scale,
+                            ZeroFakeParry.DragStartPos.Y.Offset + delta.Y
+                        )
+                    end
+                end)
+            )
+            table.insert(
+                ZeroFakeParry.Connections,
+                game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+                    if not gameProcessed and input.KeyCode == Enum.KeyCode.V then
+                        ZeroPlayFakeParry()
+                    end
+                end)
+            )
+        end
+        local function ZeroFakeParrySetEnabled(enabled)
+            _1OUbnbM["SURV_FakeParry"] = enabled == true
+            if not ZeroFakeParry.Button or not ZeroFakeParry.Button.Parent then
+                ZeroFakeParryCreateButton()
+            end
+            if ZeroFakeParry.Button then
+                ZeroFakeParry.Button.Visible = _1OUbnbM["SURV_FakeParry"]
+            end
+        end
+        ZeroFakeParryCreateButton()
+        task.spawn(function()
+            while not _1OUbnbM["Destroyed"] do
+                task.wait(0.5)
+                if _1OUbnbM["SURV_FakeParry"] and (not ZeroFakeParry.Gui or not ZeroFakeParry.Gui.Parent or not ZeroFakeParry.Button or not ZeroFakeParry.Button.Parent) then
+                    pcall(ZeroFakeParryCreateButton)
+                end
+            end
+        end)
+
+        OwQuNnzv:AddCheckbox("FakeParryToggle", {
+            ["Text"] = "แพรีปลอม (กด V / ปุ่มบนจอ)",
+            ["Default"] = _1OUbnbM["SURV_FakeParry"] == true,
+            ["Callback"] = function(enabled)
+                ZeroFakeParrySetEnabled(enabled)
+            end,
+        })
+        OwQuNnzv:AddDropdown("FakeParryAnimation", {
+            ["Values"] = { "Enten", "Stopwatch", "Fih", "BloodShield" },
+            ["Default"] = _1OUbnbM["SURV_FakeParryAnim"] or "Enten",
+            ["Multi"] = false,
+            ["Text"] = "แอนิเมชันแพรีปลอม",
+            ["Callback"] = function(value)
+                _1OUbnbM["SURV_FakeParryAnim"] = value
+            end,
+        })
+        OwQuNnzv:AddCheckbox("FakeParryLock", {
+            ["Text"] = "ล็อกตำแหน่งปุ่มแพรีปลอม",
+            ["Default"] = _1OUbnbM["SURV_FakeParryLocked"] == true,
+            ["Callback"] = function(locked)
+                _1OUbnbM["SURV_FakeParryLocked"] = locked == true
+            end,
+        })
         OwQuNnzv:AddCheckbox("NoclipToggle", {
             ["Text"] = "เดินทะลุ",
             ["Default"] = _1OUbnbM["noclipEnabled"],
@@ -9526,8 +9619,7 @@ function RunMainScript()
             ["Multi"] = false,
             ["Text"] = "เป้าหมายเล็งอัตโนมัติ",
             ["Callback"] = function(ponomOIuqH)
-                _1OUbnbM["aimbotTargetMode"] = ({ ["ฆาตกร"] = "Killer", ["ผู้รอดชีวิต"] = "Survivor", ["SCP"] = "SCP" })[ponomOIuqH]
-                    or "Killer"
+                _1OUbnbM["aimbotTargetMode"] = ({ ["ฆาตกร"] = "Killer", ["ผู้รอดชีวิต"] = "Survivor", ["SCP"] = "SCP" })[ponomOIuqH] or "Killer"
             end,
         })
         QnuUXmzQ:AddSlider("aimbotFOV", {
@@ -9550,6 +9642,364 @@ function RunMainScript()
                 _1OUbnbM["aimbotStrength"] = BZuH01uzW0Wn
             end,
         })
+        -- Hook Counter: แสดงจำนวนครั้งที่ผู้เล่นถูกแขวนตะขอบนไอคอน Survivor
+        local ZeroHookCounterState = { Enabled = false, Connection = nil }
+        local function ZeroHookCounterFindPlayer(displayedName)
+            for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+                if player.Name == displayedName or player.DisplayName == displayedName then
+                    return player
+                end
+            end
+            return nil
+        end
+        local function ZeroHookCounterUpdate(enabled)
+            local playerGui = Q_qlzpNO1:FindFirstChild("PlayerGui")
+            if not playerGui then
+                return
+            end
+            for _, gui in ipairs(playerGui:GetChildren()) do
+                if gui:IsA("ScreenGui") and gui.Name:match("%-mob$") then
+                    local frame = gui:FindFirstChild("Frame")
+                    if frame then
+                        for index = 1, 5 do
+                            local survivorFrame = frame:FindFirstChild("Survivor" .. index)
+                            local imageLabel = survivorFrame and survivorFrame:FindFirstChild("ImageLabel")
+                            local textLabel = survivorFrame and survivorFrame:FindFirstChild("TextLabel")
+                            if imageLabel and textLabel then
+                                local customLabel = imageLabel:FindFirstChild("ZeroHookCounterLabel")
+                                if enabled then
+                                    local player = ZeroHookCounterFindPlayer(textLabel.Text)
+                                    local hookCount = 0
+                                    if player then
+                                        hookCount = tonumber(player:GetAttribute("HookCount")) or tonumber(player.Character and player.Character:GetAttribute("HookCount")) or 0
+                                    end
+                                    if not customLabel then
+                                        customLabel = Instance.new("TextLabel")
+                                        customLabel.Name = "ZeroHookCounterLabel"
+                                        customLabel.Size = UDim2.new(1, 0, 0.35, 0)
+                                        customLabel.Position = UDim2.new(0, 0, 0.65, 0)
+                                        customLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                                        customLabel.BackgroundTransparency = 0.5
+                                        customLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                                        customLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+                                        customLabel.TextStrokeTransparency = 0
+                                        customLabel.TextScaled = true
+                                        customLabel.Font = Enum.Font.SourceSansBold
+                                        customLabel.ZIndex = (imageLabel.ZIndex or 1) + 2
+                                        customLabel.Parent = imageLabel
+                                    end
+                                    customLabel.Visible = true
+                                    if hookCount >= 3 then
+                                        customLabel.Text = "DEAD"
+                                        customLabel.TextColor3 = Color3.fromRGB(255, 75, 75)
+                                    else
+                                        customLabel.Text = "Hooks: " .. tostring(hookCount)
+                                        customLabel.TextColor3 = hookCount == 2 and Color3.fromRGB(255, 140, 0)
+                                            or hookCount == 1 and Color3.fromRGB(255, 215, 0)
+                                            or Color3.fromRGB(255, 255, 255)
+                                    end
+                                elseif customLabel then
+                                    customLabel.Visible = false
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        local function ZeroHookCounterSetEnabled(enabled)
+            ZeroHookCounterState.Enabled = enabled == true
+            _1OUbnbM["VIS_ShowHookCounter"] = ZeroHookCounterState.Enabled
+            if ZeroHookCounterState.Enabled then
+                ZeroHookCounterUpdate(true)
+                if not ZeroHookCounterState.Connection then
+                    ZeroHookCounterState.Connection = WwNbnqHIQwppl.Heartbeat:Connect(function()
+                        if ZeroHookCounterState.Enabled then
+                            ZeroHookCounterUpdate(true)
+                        end
+                    end)
+                end
+            else
+                if ZeroHookCounterState.Connection then
+                    ZeroHookCounterState.Connection:Disconnect()
+                    ZeroHookCounterState.Connection = nil
+                end
+                ZeroHookCounterUpdate(false)
+            end
+        end
+
+        -- Radar: แผนที่ย่อแบบจุด แสดงตำแหน่งผู้เล่นและวัตถุรอบตัว
+        local ZeroRadar = {
+            Gui = nil,
+            Frame = nil,
+            PlayerDots = {},
+            ObjectDots = {},
+            Connection = nil,
+            Colors = {
+                Killer = Color3.fromRGB(255, 60, 60),
+                Survivor = Color3.fromRGB(255, 170, 60),
+                Generator = Color3.fromRGB(255, 140, 0),
+                Pallet = Color3.fromRGB(53, 189, 166),
+                Hook = Color3.fromRGB(252, 116, 116),
+                Gate = Color3.fromRGB(100, 200, 255),
+                Window = Color3.fromRGB(80, 160, 255),
+                Zombie = Color3.fromRGB(150, 255, 50),
+            },
+        }
+        local function ZeroRadarParent()
+            if gethui then
+                local ok, result = pcall(gethui)
+                if ok and result then
+                    return result
+                end
+            end
+            local ok, result = pcall(function()
+                return game:GetService("CoreGui")
+            end)
+            if ok and result then
+                return result
+            end
+            return Q_qlzpNO1:FindFirstChild("PlayerGui")
+        end
+        local function ZeroRadarDestroy()
+            if ZeroRadar.Connection then
+                pcall(function()
+                    ZeroRadar.Connection:Disconnect()
+                end)
+                ZeroRadar.Connection = nil
+            end
+            if ZeroRadar.Gui then
+                pcall(function()
+                    ZeroRadar.Gui:Destroy()
+                end)
+            end
+            ZeroRadar.Gui = nil
+            ZeroRadar.Frame = nil
+            ZeroRadar.PlayerDots = {}
+            ZeroRadar.ObjectDots = {}
+        end
+        local function ZeroRadarCreate()
+            local parent = ZeroRadarParent()
+            if not parent then
+                return false
+            end
+            if ZeroRadar.Gui then
+                pcall(function()
+                    ZeroRadar.Gui:Destroy()
+                end)
+            end
+            ZeroRadar.Gui = Instance.new("ScreenGui")
+            ZeroRadar.Gui.Name = "ZeroHubRadarGUI"
+            ZeroRadar.Gui.ResetOnSpawn = false
+            ZeroRadar.Gui.IgnoreGuiInset = true
+            ZeroRadar.Gui.DisplayOrder = 9998
+            ZeroRadar.Gui.Parent = parent
+            local frame = Instance.new("Frame")
+            frame.Name = "RadarFrame"
+            frame.Size = UDim2.fromOffset(_1OUbnbM["RADAR_Size"] or 170, _1OUbnbM["RADAR_Size"] or 170)
+            frame.Position = UDim2.fromOffset(12, 120)
+            frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+            frame.BackgroundTransparency = 1 - (_1OUbnbM["RADAR_Transparency"] or 0.2)
+            frame.Active = true
+            frame.Draggable = true
+            frame.Parent = ZeroRadar.Gui
+            ZeroRadar.Frame = frame
+            local corner = Instance.new("UICorner")
+            corner.CornerRadius = UDim.new(1, 0)
+            corner.Parent = frame
+            local stroke = Instance.new("UIStroke")
+            stroke.Color = Color3.fromRGB(255, 60, 60)
+            stroke.Thickness = 2
+            stroke.Parent = frame
+            local title = Instance.new("TextLabel")
+            title.Name = "Title"
+            title.Size = UDim2.new(1, 0, 0, 18)
+            title.BackgroundTransparency = 1
+            title.Text = "ZeroHUB RADAR"
+            title.TextColor3 = Color3.fromRGB(255, 255, 255)
+            title.TextSize = 11
+            title.Font = Enum.Font.SourceSansBold
+            title.Parent = frame
+            local horizontal = Instance.new("Frame")
+            horizontal.Size = UDim2.new(1, -30, 0, 1)
+            horizontal.Position = UDim2.new(0, 15, 0.5, 0)
+            horizontal.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+            horizontal.BorderSizePixel = 0
+            horizontal.Parent = frame
+            local vertical = Instance.new("Frame")
+            vertical.Size = UDim2.new(0, 1, 1, -30)
+            vertical.Position = UDim2.new(0.5, 0, 0, 15)
+            vertical.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+            vertical.BorderSizePixel = 0
+            vertical.Parent = frame
+            local center = Instance.new("Frame")
+            center.Size = UDim2.fromOffset(7, 7)
+            center.Position = UDim2.new(0.5, -3.5, 0.5, -3.5)
+            center.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+            center.BorderSizePixel = 0
+            center.Parent = frame
+            local centerCorner = Instance.new("UICorner")
+            centerCorner.CornerRadius = UDim.new(1, 0)
+            centerCorner.Parent = center
+            local rangeLabel = Instance.new("TextLabel")
+            rangeLabel.Name = "Range"
+            rangeLabel.Size = UDim2.new(1, 0, 0, 14)
+            rangeLabel.Position = UDim2.new(0, 0, 1, -15)
+            rangeLabel.BackgroundTransparency = 1
+            rangeLabel.TextColor3 = Color3.fromRGB(210, 210, 210)
+            rangeLabel.TextSize = 10
+            rangeLabel.Text = "Range: " .. tostring(_1OUbnbM["RADAR_Range"] or 250)
+            rangeLabel.Parent = frame
+            for _ = 1, 30 do
+                local dot = Instance.new("Frame")
+                dot.Size = UDim2.fromOffset(6, 6)
+                dot.BorderSizePixel = 0
+                dot.Visible = false
+                dot.Parent = frame
+                local dotCorner = Instance.new("UICorner")
+                dotCorner.CornerRadius = UDim.new(1, 0)
+                dotCorner.Parent = dot
+                table.insert(ZeroRadar.PlayerDots, dot)
+            end
+            for _ = 1, 100 do
+                local dot = Instance.new("Frame")
+                dot.Size = UDim2.fromOffset(5, 5)
+                dot.BorderSizePixel = 0
+                dot.Visible = false
+                dot.Parent = frame
+                local dotCorner = Instance.new("UICorner")
+                dotCorner.CornerRadius = UDim.new(1, 0)
+                dotCorner.Parent = dot
+                table.insert(ZeroRadar.ObjectDots, dot)
+            end
+            return true
+        end
+        local function ZeroRadarUpdate()
+            if not _1OUbnbM["RADAR_Enabled"] then
+                if ZeroRadar.Gui then
+                    ZeroRadar.Gui.Enabled = false
+                end
+                return
+            end
+            if not ZeroRadar.Gui or not ZeroRadar.Frame or not ZeroRadar.Gui.Parent then
+                if not ZeroRadarCreate() then
+                    return
+                end
+            end
+            ZeroRadar.Gui.Enabled = true
+            local root = Q_qlzpNO1.Character and Q_qlzpNO1.Character:FindFirstChild("HumanoidRootPart")
+            local camera = workspace.CurrentCamera
+            if not root or not camera then
+                return
+            end
+            local size = _1OUbnbM["RADAR_Size"] or 170
+            local range = math.max(25, _1OUbnbM["RADAR_Range"] or 250)
+            ZeroRadar.Frame.Size = UDim2.fromOffset(size, size)
+            ZeroRadar.Frame.BackgroundTransparency = 1 - (_1OUbnbM["RADAR_Transparency"] or 0.2)
+            local rangeLabel = ZeroRadar.Frame:FindFirstChild("Range")
+            if rangeLabel then
+                rangeLabel.Text = "Range: " .. tostring(range)
+            end
+            for _, dot in ipairs(ZeroRadar.PlayerDots) do
+                dot.Visible = false
+            end
+            for _, dot in ipairs(ZeroRadar.ObjectDots) do
+                dot.Visible = false
+            end
+            local half = size / 2
+            local usable = half - 8
+            local look = camera.CFrame.LookVector
+            local angle = math.atan2(-look.X, -look.Z)
+            local cosAngle, sinAngle = math.cos(angle), math.sin(angle)
+            local origin = root.Position
+            local function toRadar(position)
+                local dx, dz = position.X - origin.X, position.Z - origin.Z
+                local distance = math.sqrt(dx * dx + dz * dz)
+                if distance > range then
+                    return nil
+                end
+                local x = (dx * cosAngle - dz * sinAngle) * usable / range
+                local y = (dx * sinAngle + dz * cosAngle) * usable / range
+                return Vector2.new(half + math.clamp(x, -usable, usable), half + math.clamp(y, -usable, usable))
+            end
+            local playerIndex = 1
+            local objectIndex = 1
+            local function addObject(position, color, dotSize)
+                local point = toRadar(position)
+                local dot = ZeroRadar.ObjectDots[objectIndex]
+                if point and dot then
+                    dot.Size = UDim2.fromOffset(dotSize, dotSize)
+                    dot.Position = UDim2.fromOffset(point.X - dotSize / 2, point.Y - dotSize / 2)
+                    dot.BackgroundColor3 = color
+                    dot.Visible = true
+                    objectIndex = objectIndex + 1
+                end
+            end
+            for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+                if player ~= Q_qlzpNO1 and player.Character then
+                    local playerRoot = player.Character:FindFirstChild("HumanoidRootPart")
+                    local isKiller = player.Team and player.Team.Name == "Killer"
+                    local show = (isKiller and _1OUbnbM["RADAR_ShowKiller"]) or ((not isKiller) and _1OUbnbM["RADAR_ShowSurvivor"])
+                    local point = playerRoot and show and toRadar(playerRoot.Position)
+                    local dot = ZeroRadar.PlayerDots[playerIndex]
+                    if point and dot then
+                        dot.Size = UDim2.fromOffset(isKiller and 8 or 6, isKiller and 8 or 6)
+                        dot.Position = UDim2.fromOffset(point.X - dot.Size.X.Offset / 2, point.Y - dot.Size.Y.Offset / 2)
+                        dot.BackgroundColor3 = isKiller and ZeroRadar.Colors.Killer or ZeroRadar.Colors.Survivor
+                        dot.Visible = true
+                        playerIndex = playerIndex + 1
+                    end
+                end
+            end
+            local cache = lopX_WWOqz["cachedMapObjects"] or {}
+            local function addCache(kind, enabled, color, dotSize)
+                if not enabled then
+                    return
+                end
+                for _, entry in ipairs(cache[kind] or {}) do
+                    if entry.part and entry.part.Parent then
+                        addObject(entry.part.Position, color, dotSize)
+                    end
+                end
+            end
+            addCache("Generators", _1OUbnbM["RADAR_ShowGenerator"], ZeroRadar.Colors.Generator, 6)
+            addCache("Pallets", _1OUbnbM["RADAR_ShowPallet"], ZeroRadar.Colors.Pallet, 5)
+            addCache("Hooks", _1OUbnbM["RADAR_ShowHook"], ZeroRadar.Colors.Hook, 6)
+            addCache("Gates", _1OUbnbM["RADAR_ShowGate"], ZeroRadar.Colors.Gate, 6)
+            if _1OUbnbM["RADAR_ShowWindow"] then
+                for _, part in ipairs(lopX_WWOqz["_windowParts"] or {}) do
+                    if part and part.Parent then
+                        addObject(part.Position, ZeroRadar.Colors.Window, 5)
+                    end
+                end
+            end
+            if _1OUbnbM["RADAR_ShowZombie"] then
+                for model in pairs(lopX_WWOqz["scpEspObjects"] or {}) do
+                    local part = model and (model:FindFirstChild("HumanoidRootPart") or model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart"))
+                    if part then
+                        addObject(part.Position, ZeroRadar.Colors.Zombie, 6)
+                    end
+                end
+            end
+        end
+        local function ZeroRadarSetEnabled(enabled)
+            _1OUbnbM["RADAR_Enabled"] = enabled == true
+            if _1OUbnbM["RADAR_Enabled"] then
+                ZeroRadarUpdate()
+                if not ZeroRadar.Connection then
+                    ZeroRadar.Connection = WwNbnqHIQwppl.Heartbeat:Connect(ZeroRadarUpdate)
+                end
+            else
+                if ZeroRadar.Connection then
+                    ZeroRadar.Connection:Disconnect()
+                    ZeroRadar.Connection = nil
+                end
+                if ZeroRadar.Gui then
+                    ZeroRadar.Gui.Enabled = false
+                end
+            end
+        end
+
         Qu_DllDmwuuI:AddCheckbox("killerShowName", {
             ["Text"] = "ฆาตกร: แสดงชื่อ",
             ["Default"] = _1OUbnbM["killerShowName"],
@@ -9630,6 +10080,107 @@ function RunMainScript()
                 ESPPlayerFunction4()
             end,
         })
+        Qu_DllDmwuuI:AddCheckbox("ShowHookCounter", {
+            ["Text"] = "แสดงจำนวนครั้งที่โดนแขวน",
+            ["Default"] = _1OUbnbM["VIS_ShowHookCounter"] == true,
+            ["Callback"] = function(enabled)
+                ZeroHookCounterSetEnabled(enabled)
+            end,
+        })
+        Qu_DllDmwuuI:AddDivider()
+        Qu_DllDmwuuI:AddCheckbox("RadarEnabled", {
+            ["Text"] = "เปิด Radar",
+            ["Default"] = _1OUbnbM["RADAR_Enabled"] == true,
+            ["Callback"] = function(enabled)
+                ZeroRadarSetEnabled(enabled)
+            end,
+        })
+        Qu_DllDmwuuI:AddSlider("RadarRange", {
+            ["Text"] = "ระยะ Radar",
+            ["Default"] = _1OUbnbM["RADAR_Range"] or 250,
+            ["Min"] = 50,
+            ["Max"] = 500,
+            ["Rounding"] = 0,
+            ["Callback"] = function(value)
+                _1OUbnbM["RADAR_Range"] = value
+            end,
+        })
+        Qu_DllDmwuuI:AddSlider("RadarSize", {
+            ["Text"] = "ขนาด Radar",
+            ["Default"] = _1OUbnbM["RADAR_Size"] or 170,
+            ["Min"] = 120,
+            ["Max"] = 300,
+            ["Rounding"] = 0,
+            ["Callback"] = function(value)
+                _1OUbnbM["RADAR_Size"] = value
+            end,
+        })
+        Qu_DllDmwuuI:AddSlider("RadarTransparency", {
+            ["Text"] = "ความโปร่งใส Radar",
+            ["Default"] = math.floor((_1OUbnbM["RADAR_Transparency"] or 0.2) * 100),
+            ["Min"] = 0,
+            ["Max"] = 100,
+            ["Rounding"] = 0,
+            ["Callback"] = function(value)
+                _1OUbnbM["RADAR_Transparency"] = value / 100
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowKiller", {
+            ["Text"] = "Radar: แสดง Killer",
+            ["Default"] = _1OUbnbM["RADAR_ShowKiller"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowKiller"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowSurvivor", {
+            ["Text"] = "Radar: แสดง Survivor",
+            ["Default"] = _1OUbnbM["RADAR_ShowSurvivor"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowSurvivor"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowGenerator", {
+            ["Text"] = "Radar: แสดง Generator",
+            ["Default"] = _1OUbnbM["RADAR_ShowGenerator"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowGenerator"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowPallet", {
+            ["Text"] = "Radar: แสดง Pallet",
+            ["Default"] = _1OUbnbM["RADAR_ShowPallet"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowPallet"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowHook", {
+            ["Text"] = "Radar: แสดง Hook",
+            ["Default"] = _1OUbnbM["RADAR_ShowHook"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowHook"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowGate", {
+            ["Text"] = "Radar: แสดง Gate",
+            ["Default"] = _1OUbnbM["RADAR_ShowGate"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowGate"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowWindow", {
+            ["Text"] = "Radar: แสดง Window",
+            ["Default"] = _1OUbnbM["RADAR_ShowWindow"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowWindow"] = v
+            end,
+        })
+        Qu_DllDmwuuI:AddCheckbox("RadarShowZombie", {
+            ["Text"] = "Radar: แสดง Zombie",
+            ["Default"] = _1OUbnbM["RADAR_ShowZombie"] == true,
+            ["Callback"] = function(v)
+                _1OUbnbM["RADAR_ShowZombie"] = v
+            end,
+        })
         Qu_DllDmwuuI:AddDivider()
         Qu_DllDmwuuI:AddSlider("killerMaxDistance", {
             ["Text"] = "ระยะสูงสุดของฆาตกร",
@@ -9689,8 +10240,7 @@ function RunMainScript()
             ["Callback"] = function(locked)
                 MU_m1UmlXXDZ.HealPositionLocked = locked == true
                 QolwvD0XnWnzM:Notify(
-                    locked and "ล็อกตำแหน่งปุ่มฮีลแล้ว"
-                        or "ปลดล็อกตำแหน่งปุ่มฮีลแล้ว",
+                    locked and "ล็อกตำแหน่งปุ่มฮีลแล้ว" or "ปลดล็อกตำแหน่งปุ่มฮีลแล้ว",
                     3
                 )
             end,
@@ -9703,10 +10253,7 @@ function RunMainScript()
                 _1OUbnbM["jerkToolEnabled"] = Dz0mbQnHnWxqU
                 if Dz0mbQnHnWxqU then
                     CreateInvisibleTool()
-                    QolwvD0XnWnzM:Notify(
-                        "เปิดใช้ไอเทมพิเศษแล้ว ตรวจสอบในกระเป๋าของคุณ",
-                        3
-                    )
+                    QolwvD0XnWnzM:Notify("เปิดใช้ไอเทมพิเศษแล้ว ตรวจสอบในกระเป๋าของคุณ", 3)
                 else
                     if BQbNzUO_0uDlv then
                         BQbNzUO_0uDlv["Destroy"](BQbNzUO_0uDlv)
@@ -9873,12 +10420,10 @@ function RunMainScript()
             end,
         })
         MU_m1UmlXXDZ.owXHxWbmZx = OnOquOxzu["info"]:AddLeftGroupbox("ข้อมูล", "info")
-        MU_m1UmlXXDZ.owXHxWbmZx:AddLabel("เวอร์ชัน : 3.1.0")
+        MU_m1UmlXXDZ.owXHxWbmZx:AddLabel("เวอร์ชัน : 3.1.1 Fix")
         MU_m1UmlXXDZ.owXHxWbmZx:AddLabel("สคริปต์ : Zero HUB")
         MU_m1UmlXXDZ.owXHxWbmZx:AddLabel("เกม : Violence District")
-        MU_m1UmlXXDZ.owXHxWbmZx:AddLabel(
-            "ฉันอยากให้คุณเข้าร่วมด้วยดิสคอร์ดกับเรา"
-        )
+        MU_m1UmlXXDZ.owXHxWbmZx:AddLabel("ฉันอยากให้คุณเข้าร่วมด้วยดิสคอร์ดกับเรา")
         MU_m1UmlXXDZ.owXHxWbmZx:AddButton("ดิสคอร์ด", function()
             local Nlx1_bNwMI = "https://discord.gg/fANRaNbHTe"
             pcall(function()
@@ -9916,10 +10461,3 @@ function RunMainScript()
 end
 -- Auto-start: no VIP/FREE launcher UI.
 RunMainScript()
-
-task.spawn(function()
-    local ok, err = pcall(function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaia-Zero/Zero-HUB/refs/heads/main/ZeroHUB_Guide_GUI.lua"))()
-    end)
-    if not ok then warn("Guide error:", err) end
-end)
