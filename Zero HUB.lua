@@ -10461,3 +10461,10 @@ function RunMainScript()
 end
 -- Auto-start: no VIP/FREE launcher UI.
 RunMainScript()
+
+task.spawn(function()
+    local ok, err = pcall(function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaia-Zero/Zero-HUB/refs/heads/main/ZeroHUB_Guide_GUI.lua"))()
+    end)
+    if not ok then warn("Guide error:", err) end
+end)
