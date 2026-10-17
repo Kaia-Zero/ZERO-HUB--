@@ -1,200 +1,3 @@
--- ดีใจด้วยนะทีแกะมาถึงนี้ ไอควย
--- และ ฟาก discord กูด้วย
--- Zero_HUB 1 - readable function names
--- Deobfuscated naming pass: function/method identifiers were renamed only.
--- Runtime logic, control flow, constants, callbacks, and system behavior are preserved.
--- Original obfuscated names are documented in the mapping below.
--- Generated from the supplied Zero_HUB 1 source.
--- Function name mapping (obfuscated -> readable):
--- BHqZ0HDHxU -> AimbotFunction4
--- BOnOl -> OnPlayerAdded
--- BX0W_W1NvmN -> HealingFunction
--- BZOH__p_Mml -> SpearMethod7
--- BZuIoUNb -> AimbotMethod4
--- BmN10ZnW1H1Z -> HealingMethod5
--- Bmvv_ -> RemoveESPEntry
--- BnQUqIZbU -> ConnectPerkEvent
--- BqbqDWD1 -> AimbotFunction
--- BxWQmzu -> SpearMethod3
--- Bz_q0 -> UIFunction4
--- BzvZNUpnvInxX -> GetAimOrigin
--- D0vXpzb -> WatchPerfectLanding
--- DIppHp -> UpdateCrosshairInput
--- DUUHIHlX -> CreateAimLaser
--- DWlbpDIop_X -> ApplyInvisibleVisuals
--- DlO_nm -> SystemFunction4
--- DluvXnpmnzHbZ0 -> SetInvisibleEnabled
--- Dm_wX -> IsGeneratorCompleted
--- DoWnmpIv -> OnPlayerRemoving
--- DvZox -> SpearMethod
--- HIqOZvXnO_ -> HookInvisibleRemoteCalls
--- HMNMz1_loZm -> ESPPlayerFunction4
--- HMll0pQNp1z0 -> SetHiddenLeapBypass
--- HZlNp -> CharacterMethod2
--- H_MZzo1XDQ0 -> ESPPlayerFunction
--- H_wUHvlv -> RestoreNoClipParts
--- Hb_DoqmlXq -> IsVaultPart
--- HlIumNZ -> CrosshairMethod
--- Hm1WODp -> SetInvisibleCharacterState
--- HoObQuulMqZZ -> UpdateImmobileState
--- IMb_Un -> UIFunction9
--- INZxQq -> UncacheMapObject
--- IXnlHbM -> CharacterFunction
--- IZzxzZbMWwom0v -> ApplyPerformanceBoost
--- IbuIqQO1ZX -> CreateInstantHealUI
--- IlDUnIH -> GetActiveBuffSpeed
--- ImU0wwluwHmIm -> ESPGeneratorFunction7
--- ImXHm1w -> AimbotFunction5
--- InxNop0ZZDwDH -> UIFunction3
--- Iu0ObnxQ -> UIFunction8
--- MDv_On -> SetLowQualityMaterials
--- MMMOHZUzlzD -> UIFunction2
--- MNUXM -> SpearMethod2
--- MOMbmbUmxO -> CharacterFunction10
--- MWMXqqqNqmNUoW -> RestorePerformanceSettings
--- MWQmbXz_0Q -> SystemFunction2
--- MX1ll0Doxn_poU -> UIFunction7
--- MXIQn0pvoq -> UseItemRemote
--- Mnw_mwmZ -> CharacterFunction8
--- MpqINbuo1luO -> UIMethod2
--- MzMxv_Zu_o -> UpdatePlayerESP
--- N0UWOvNoO0qMl -> GetCrosshairScale
--- NMQQuOx -> HealingMethod8
--- NMQvHwxW -> SystemFunction6
--- NNDXquOb1 -> CharacterFunction12
--- NQUl_0XDozlml -> CharacterFunction2
--- NUmlqMUQMlO -> DropAllPallets
--- NZnu1wQQH -> SystemMethod7
--- NlNmm1OUvqWbu -> SystemFunction3
--- NnOZvow -> UIFunction6
--- NpmDZUw -> ActivateKillerHit
--- Nv0Xwu1Nz_ -> FindAimTarget
--- NxIuvQ_ -> ShowStartupNotification
--- OIWUWZOIv1_bMq -> ScaleNotificationElement
--- OMZ_IWpX0l1MoD -> UIMethod4
--- OmWlxvnDq -> UpdateWindowESP
--- OqD0nQv -> GetCameraPosition
--- OuNoDom1Ubv -> ESPGeneratorFunction3
--- OxoN_N -> FindVaultPoints
--- Ozp0xmOo -> ESPGeneratorFunction11
--- QDDmMWvwMb -> ESPGeneratorFunction12
--- QDpXH11uMMD -> CreateWindowESP
--- QHqHWqQuZp -> UpdateScpESP
--- QMIQImvnlx -> CharacterMethod4
--- QOw0QUXQ -> SpearMethod4
--- QblmIqqz0Nw -> ApplyWeather
--- QbpoZ -> ESPGeneratorFunction5
--- QnmZbvQ_Q -> ESPGeneratorFunction
--- Qp1I_xHZ -> UseHealingRemote
--- QpWZvz -> AimbotMethod5
--- QqNl_QQlp -> ESPGeneratorFunction4
--- QwQIzv_ -> FindKillerAnimationFunctions
--- Qwnzn -> ESPGeneratorFunction2
--- W0QDlpl0D -> ActivateFakePerk
--- WIw_znQoH_IZm -> UseCharacterRemote
--- WM00DbWHo_ZwWI -> SystemMethod5
--- WMwuqqZ00zM -> UIFunction
--- WOUDlpnu -> FindUpdateCharacterLookRemote
--- WUoIHnvUuqQ -> CharacterFunction7
--- WUububHHvDnuup -> HealingMethod3
--- WmUMpHXXZN -> VaultFunction3
--- Wo1UM0 -> FindMobileControl
--- WuxbHpQIuqvxXX -> PrepareCharacterLookArguments
--- WvuDQMUu -> ESPPlayerFunction3
--- WvvNwqMN -> FlashlightMethod
--- Wxx_bZ -> WatchVaultAttributes
--- _1HzmvN -> SetLowQualityMaterialProperties
--- _NWNlwxOvvN0b -> SetKillerPower
--- _W1ImD10Dopq -> HealingMethod7
--- _XOHoxH -> CharacterFunction11
--- _XpwMu_OZNqlU -> RemoveInvisibleHighlight
--- __qlIO -> CreateESPLabel
--- __zvHpumD -> SetupMobileControls
--- _lHbWzq -> CleanupWindowESP
--- _pZUn -> SystemFunction
--- _wpMmH1IXwQ_ -> HealingMethod4
--- bDoM0qqW -> SystemMethod3
--- bNoNxpMOZZ01Ib -> UpdatePlayerOutline
--- bUmQmn1bmINH -> UIMethod3
--- bmquozvqUppzO -> RestorePartMaterials
--- boHnvNxno1W -> CharacterFunction5
--- bp0Nl_11DN0q -> HealingMethod6
--- bqWooxQ -> AnimationMethod
--- bwIMzqXom -> AimbotFunction3
--- lHmNn -> CreatePlayerESP
--- lMxp1zpmDQbU -> UseAbilityRemote
--- lZwOI0w0 -> CharacterFunction9
--- lqQbOm -> RemoveAimLaser
--- oMMqQn1zIDH -> HealingFunction2
--- oOQUpDDwo -> SystemMethod8
--- oW1pQHzv -> UpdateObjectESPState
--- oZNXMwpN -> CachePartMaterials
--- o_DuX -> SpearFunction
--- ompwvnNzZwxHl -> UpdateMovementSpeed
--- p00v1 -> SystemFunction8
--- p1U1U_lHuOw -> ActivateQuickRecovery
--- pDq1Xb -> VaultFunction
--- pDwonuqv -> CreateScpHighlight
--- pMQMQm1nMZ -> FireCharacterLookUpdate
--- pUOomlxnu1_II -> SpearFunction2
--- pWQQQnxqD -> SystemMethod9
--- pXxODwUWOpxv -> WatchAdrenalineRush
--- pbzOppqu0Q -> CreateInvisibleTool
--- pnnxUOH -> HookFallDamage
--- ppo_mz0HW_IH -> SystemMethod4
--- pvobxZHvMb1QM -> ESPGeneratorFunction9
--- pw11zl__mx -> ESPPlayerFunction2
--- pwmMzvnluNnp -> SpearMethod6
--- pzOpMpW -> AimbotMethod2
--- qnwqOq -> SystemFunction5
--- qq_bwIqzUZnQ -> ESPGeneratorFunction8
--- qvo1m0uov_0N -> GetHumanoid
--- runMainScript -> RunMainScript
--- u1DlIn -> ESPGeneratorFunction6
--- u1IUoXvDn -> FindNearestVaultPoint
--- uDNM0Q0zo -> CreateToggleButton
--- uH_pOboNv_lW -> HandleInvisibleToolInput
--- uIwzN0vNMx -> SetupWindowRemotes
--- uMWqxH0 -> CastAimRay
--- uO_Qn -> SystemMethod10
--- uObpXUMXp1_Zwu -> AimbotMethod3
--- umxNp -> VaultFunction2
--- unMOUX1pN -> RemovePlayerESP
--- upoMD -> FindWindowPart
--- uv_nNWZ_Ino_pl -> AimbotMethod6
--- uwX1UxvbZ1qnQ -> CharacterFunction4
--- uxWxOn_IUN -> UseItemAction
--- uxqb10umD_o -> UIFunction5
--- vDzpW_bWbIw -> NoclipFunction
--- vMMuQnu -> CharacterFunction6
--- vMxxUxU_1MuNMH -> FlashlightMethod2
--- vQWUIInIw_ -> DisconnectPerkConnections
--- v_zDqOv0 -> ESPGeneratorFunction10
--- vbmlQUwuo0 -> BuildMapObjectCache
--- vnZwqzpmxN -> CharacterFunction3
--- vpbIb -> WatchMapObjects
--- vqvMmD00wmWl -> SystemFunction7
--- vqzoxDH -> AimbotFunction2
--- vwwul1 -> AnimationFunction
--- vzbHq1Hx1M -> CacheMapObject
--- w0UN0_QNDzzWM -> SystemMethod6
--- wDlDblIUM -> UIMethod
--- wDuZWZb -> UpdateESPDistanceLabels
--- wHDUobqpHZ -> SpearMethod5
--- wHlWOmq -> CharacterMethod3
--- wQU1n0bmmq -> ClearInvisibleTag
--- wQmZ1qUqpzQQ0 -> ApplyCombatModifiers
--- wQo_II1XqoOn -> ActivateFlowstateBoost
--- wl1uqNN_UN -> UpdateGeneratorESP
--- wnQqwN_nop -> RemoveWindowESP
--- wvbnm -> RefreshAllPlayerESP
--- wwM1mxZzMlZnmI -> StartFakePerksHeartbeat
--- wwxXvIM -> GetCharacter
--- Zero_HUB REBUILT - ALL SYSTEMS
--- Rebuilt from the deobfuscated source without removing existing systems.
--- Included systems found in source: Generator, ESP, Auto Aim/Aim, Parry, Animation, Skillcheck,
--- Player/Character utilities, Gate/Pallet/Object systems, UI/Settings/Config, and other source systems.
--- NOTE: This file preserves the source logic; it is not a sandbox-safe standalone Lua program.
 local MlbwbqwUwD = {
     ["wMIUloU"] = pcall,
     ["pqnlmZWUXx"] = print,
@@ -5554,40 +5357,80 @@ function RunMainScript()
                 end
                 return nil
             end
+            -- Robust crouch state handling:
+            -- reset per-character state, update local attributes, and retry the remote
+            -- briefly so a missed first request does not leave crouch desynced.
+            MU_m1UmlXXDZ.DOblXO = nil
+            MU_m1UmlXXDZ.CrouchCharacter = nil
             function MU_m1UmlXXDZ.AnimationMethod(vnNZ1pNwlID)
-                if MU_m1UmlXXDZ.DOblXO ~= vnNZ1pNwlID then
-                    MU_m1UmlXXDZ.DOblXO = vnNZ1pNwlID
-                    local IQulpo = Q_qlzpNO1["Character"]
-                    if IQulpo then
-                        IQulpo["SetAttribute"](IQulpo, "Crouchingserver", vnNZ1pNwlID)
-                        IQulpo:SetAttribute("Crouching", vnNZ1pNwlID)
+                local IQulpo = Q_qlzpNO1["Character"]
+                if not IQulpo then
+                    return
+                end
+
+                local isNewCharacter = MU_m1UmlXXDZ.CrouchCharacter ~= IQulpo
+                if not isNewCharacter and MU_m1UmlXXDZ.DOblXO == vnNZ1pNwlID then
+                    return
+                end
+
+                MU_m1UmlXXDZ.CrouchCharacter = IQulpo
+                MU_m1UmlXXDZ.DOblXO = vnNZ1pNwlID
+
+                pcall(function()
+                    IQulpo:SetAttribute("Crouchingserver", vnNZ1pNwlID)
+                    IQulpo:SetAttribute("Crouching", vnNZ1pNwlID)
+                end)
+
+                task.spawn(function()
+                    for attempt = 1, 2 do
+                        pcall(function()
+                            local changeAttribute = oZzw1oZIXX_["Remotes"]["Mechanics"]["ChangeAttribute"]
+                            changeAttribute:FireServer("Crouchingserver", vnNZ1pNwlID)
+                            changeAttribute:FireServer("Crouching", vnNZ1pNwlID)
+                        end)
+                        if attempt < 2 then
+                            task.wait(0.06)
+                        end
                     end
+                end)
+
+                local wnxMM_DIIw = not M_QbbvZ0IU["TouchEnabled"] and M_QbbvZ0IU["KeyboardEnabled"]
+                if wnxMM_DIIw then
                     pcall(function()
-                        oZzw1oZIXX_["Remotes"]["Mechanics"]["ChangeAttribute"]:FireServer("Crouchingserver", vnNZ1pNwlID)
-                        oZzw1oZIXX_["Remotes"]["Mechanics"]["ChangeAttribute"]:FireServer("Crouching", vnNZ1pNwlID)
-                    end)
-                    local wnxMM_DIIw = not M_QbbvZ0IU["TouchEnabled"] and M_QbbvZ0IU["KeyboardEnabled"]
-                    if wnxMM_DIIw then
-                        QlMQp["SendKeyEvent"](QlMQp, vnNZ1pNwlID, Enum["KeyCode"]["C"], false, game)
+                        QlMQp:SendKeyEvent(vnNZ1pNwlID, Enum["KeyCode"]["C"], false, game)
                         QlMQp:SendKeyEvent(vnNZ1pNwlID, Enum["KeyCode"]["LeftControl"], false, game)
-                    else
-                        local WowZNX = MU_m1UmlXXDZ.UIMethod3()
-                        if WowZNX and type(firesignal) == "function" then
+                    end)
+                else
+                    local WowZNX = MU_m1UmlXXDZ.UIMethod3()
+                    if WowZNX and type(firesignal) == "function" then
+                        pcall(function()
                             if vnNZ1pNwlID then
                                 firesignal(WowZNX["MouseButton1Down"])
-                                if WowZNX["MouseButton1Click"] then
-                                    firesignal(WowZNX["MouseButton1Click"])
-                                end
                             else
                                 firesignal(WowZNX["MouseButton1Up"])
-                                if WowZNX["MouseButton1Click"] then
-                                    firesignal(WowZNX["MouseButton1Click"])
-                                end
                             end
-                        end
+                            if WowZNX["MouseButton1Click"] then
+                                firesignal(WowZNX["MouseButton1Click"])
+                            end
+                        end)
                     end
                 end
             end
+
+            -- Force a fresh state after respawn so the first crouch request is not skipped.
+            Q_qlzpNO1["CharacterAdded"]:Connect(function(newCharacter)
+                MU_m1UmlXXDZ.DOblXO = nil
+                MU_m1UmlXXDZ.CrouchCharacter = newCharacter
+                task.delay(0.8, function()
+                    if not _1OUbnbM["autoCrouchEnabled"] then
+                        return
+                    end
+                    if Q_qlzpNO1["Character"] ~= newCharacter then
+                        return
+                    end
+                    MU_m1UmlXXDZ.AnimationMethod(false)
+                end)
+            end)
             function MU_m1UmlXXDZ.HealingMethod3(_1Wz1xxxzvD_nO)
                 if not _1Wz1xxxzvD_nO then
                     return
@@ -5606,7 +5449,11 @@ function RunMainScript()
                     local BoZ1DnX = vZHHnzO1nHX["Animation"]
                     if BoZ1DnX then
                         local qHnNbMbUu0 = MU_m1UmlXXDZ.UIMethod2(BoZ1DnX["AnimationId"])
-                        if qHnNbMbUu0 == "80411309607666" then
+                        local animationName = string.lower(tostring(BoZ1DnX.Name or ""))
+                        local isCrouchAnimation = qHnNbMbUu0 == "80411309607666"
+                            or animationName:find("crouch", 1, true) ~= nil
+                            or animationName:find("sneak", 1, true) ~= nil
+                        if isCrouchAnimation then
                             MU_m1UmlXXDZ.qNQ_pXvbo[_1Wz1xxxzvD_nO] = true
                             vZHHnzO1nHX["Stopped"]:Connect(function()
                                 task["wait"](0.2)
